@@ -15,4 +15,6 @@ GET     /playerturn                 controllers.HomeController.getPlayerturn
 
 GET     /roll                       controllers.HomeController.roll
 
-GET     /turn/:piece                          controllers.HomeController.setPieceToMove(piece:Int)
+GET     /turn/:piece                controllers.HomeController.setPieceToMove(piece:Int)
+
+GET     /mesh                       controllers.HomeController.showMesh

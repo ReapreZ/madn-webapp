@@ -83,4 +83,8 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     Ok(playerturn.toString)
   }
 
+  def showMesh() = Action{
+    Ok(controller.game.mesh.mesh())
+  }
+
 }
