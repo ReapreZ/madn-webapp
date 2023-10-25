@@ -38,10 +38,11 @@
 <body>
 
 <div class="topnav">
-    <a @if(currentPath == "/") {class="active"} href="/">Home</a>
-    <a @if(currentPath == "/game") {class="active"} href="roll">Game</a>
-    <a @if(currentPath == "/about") {class="active"} href="about">About</a>
+    <a @if(currentPath == "/") {class="active"} href="@routes.HomeController.index()">Home</a>
+    <a @if(currentPath == "/game") {class="active"} href="@routes.HomeController.game">Game</a>
+    <a @if(currentPath == "/about") {class="active"} href="@routes.HomeController.about()">About</a>
 </div>
+
 <section class="content">@content</section>
 
 </body>

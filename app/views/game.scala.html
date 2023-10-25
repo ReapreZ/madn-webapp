@@ -8,8 +8,13 @@
             display: flex;
         }
 
-        button {
-            margin-right: 10px;
+        .button-container button {
+            margin-right: 50px;
+            width: 125px;
+            height: 40px;
+        }
+        .button-container button:first-child {
+            margin-left: 50px; /* Passen Sie den Wert nach Bedarf an */
         }
     </style>
     <div>
@@ -23,6 +28,28 @@
             <form action="@routes.HomeController.moveMagic" method="GET">
                 <button type="submit">Magic Dice</button>
             </form>
+        </div>
+        <br>
+        <p>Pieces to move:</p>
+        <br>
+        <div>
+            <div class="button-container">
+                <form action="@routes.HomeController.setPieceToMove(1)" method="GET">
+                    <button type="submit">1</button>
+                </form>
+                <form action="@routes.HomeController.setPieceToMove(2)" method="GET">
+                    <button type="submit">2</button>
+                </form>
+            </div>
+            <br>
+            <div>
+                <div class="button-container">
+                    <form action="@routes.HomeController.setPieceToMove(3)" method="GET">
+                        <button type="submit">3</button>
+                    </form>
+                    <form action="@routes.HomeController.setPieceToMove(4)" method="GET">
+                        <button type="submit">4</button>
+                    </form>
         </div>
     </head>
 </htlm>

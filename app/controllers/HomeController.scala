@@ -67,7 +67,8 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
   }
   def moveMagic() = Action {
     if (controller.game.piecesOutList(controller.game.playerturn) >= 1) {
-      Ok("Der Würfel ist auf der " + 6 + " gelandet.\n\nWähle die Figur aus mit der du laufen möchtest\n\n" + gameAsText)
+      Ok(views.html.game("Der Würfel ist auf der " + 6 +
+        " gelandet.\n\nWähle die Figur aus mit der du laufen möchtest\n\n" + gameAsText))
     } else {
       controller.doAndPublish(controller.move1((6)))
       Ok(views.html.game("Der Würfel ist auf der " + 6.toString + " gelandet.\n\n" + gameAsText))
