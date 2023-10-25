@@ -54,6 +54,10 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     Ok(views.html.index())
   }
 
+  def show() = Action { implicit request: Request[AnyContent] =>
+    Ok(views.html.about())
+  }
+
   def roll() = Action {
     rolledDice = dice.diceRandom(6)
     if(controller.game.piecesOutList(controller.game.playerturn) >= 1) {

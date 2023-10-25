@@ -3,6 +3,7 @@
 # https://www.playframework.com/documentation/latest/ScalaRouting
 # ~~~~
 
+ + NOCSRF
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index()
 
@@ -18,3 +19,5 @@ GET     /roll                       controllers.HomeController.roll
 GET     /turn/:piece                controllers.HomeController.setPieceToMove(piece:Int)
 
 GET     /mesh                       controllers.HomeController.showMesh
+
+GET     /about                      controllers.HomeController.show()
