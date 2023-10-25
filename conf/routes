@@ -20,4 +20,6 @@ GET     /turn/:piece                controllers.HomeController.setPieceToMove(pi
 
 GET     /mesh                       controllers.HomeController.showMesh
 
-GET     /about                      controllers.HomeController.show()
+GET     /about                      controllers.HomeController.about()
+
+GET     /game                       controllers.HomeController.game

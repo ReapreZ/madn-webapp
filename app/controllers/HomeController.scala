@@ -40,7 +40,8 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     Ok(views.html.index())
   }
 
-  def show() = Action { implicit request: Request[AnyContent] =>
+  def about() = Action { implicit request: Request[AnyContent] =>
+    val currentPath = request.path
     Ok(views.html.about())
   }
 
@@ -86,6 +87,10 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
 
   def showMesh() = Action{
     Ok(controller.game.mesh.mesh())
+  }
+
+  def game() = Action {
+    Ok(views.html.game(gameAsText))
   }
 
   private def gameAsText = {
