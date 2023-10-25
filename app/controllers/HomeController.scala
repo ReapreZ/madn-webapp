@@ -2,11 +2,7 @@ package controllers
 
 import com.google.inject.Guice
 import de.htwg.madn.controller.ControllerInterface
-import de.htwg.madn.controller.controllerBase.Controller
 import de.htwg.madn.model.diceComponent.diceBase.Dice
-import de.htwg.madn.model.gameComponent.GameInterface
-import de.htwg.madn.model.gameComponent.gameBase.Game
-import de.htwg.madn.model.meshComponent.meshBase.Mesh
 import de.htwg.madn.start.MADNModule
 
 import javax.inject._
@@ -27,20 +23,10 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
 
   val dice = new Dice
   var rolledDice = 1
+  var playerturnAsChar = 'A';
 
-  private def gameAsText = {
 
-    val playerturn = controller.game.getPlayerturn
-    val playerturnAsChar = getPlayerturnAsChar(playerturn)
-    playerturnAsChar + " hat gerade gewürfelt.\n\n" + controller.game.mesh.mesh()
-  }
 
-  def getPlayerturnAsChar(playerturn: Int): Char = {
-    controller.getTurnC1(playerturn) match {
-      case Success(v) => v
-      case Failure(e) => 'e'
-    }
-  }
 
   
   /**
@@ -58,13 +44,24 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     Ok(views.html.about())
   }
 
+
+
   def roll() = Action {
+    val playerturn = controller.game.getPlayerturn
+    playerturnAsChar = getPlayerturnAsChar(playerturn)
     rolledDice = dice.diceRandom(6)
-    if(controller.game.piecesOutList(controller.game.playerturn) >= 1) {
+    if(controller.game.piecesOutList(playerturn) >= 1) {
       Ok("Der Würfel ist auf der " + rolledDice + " gelandet.\n\nWähle die Figur aus mit der du laufen möchtest\n\n"  + gameAsText)
     } else {
       controller.doAndPublish(controller.move1((rolledDice)))
       Ok("Der Würfel ist auf der " + rolledDice.toString + " gelandet.\n\n" + gameAsText)
+    }
+  }
+
+  def getPlayerturnAsChar(playerturn: Int): Char = {
+    controller.getTurnC1(playerturn) match {
+      case Success(v) => v
+      case Failure(e) => 'e'
     }
   }
   def moveMagic() = Action {
@@ -90,5 +87,13 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
   def showMesh() = Action{
     Ok(controller.game.mesh.mesh())
   }
+
+  private def gameAsText = {
+
+
+    playerturnAsChar + " hat gerade gewürfelt.\n\n" + controller.game.mesh.mesh()
+  }
+
+
 
 }
