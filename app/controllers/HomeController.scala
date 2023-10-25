@@ -46,16 +46,16 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
   }
 
 
-
   def roll() = Action {
     val playerturn = controller.game.getPlayerturn
     playerturnAsChar = getPlayerturnAsChar(playerturn)
     rolledDice = dice.diceRandom(6)
     if(controller.game.piecesOutList(playerturn) >= 1) {
-      Ok("Der Würfel ist auf der " + rolledDice + " gelandet.\n\nWähle die Figur aus mit der du laufen möchtest\n\n"  + gameAsText)
+      Ok(views.html.game("Der Würfel ist auf der " + rolledDice +
+        " gelandet.\n\nWähle die Figur aus mit der du laufen möchtest\n\n"  + gameAsText))
     } else {
       controller.doAndPublish(controller.move1((rolledDice)))
-      Ok("Der Würfel ist auf der " + rolledDice.toString + " gelandet.\n\n" + gameAsText)
+      Ok(views.html.game("Der Würfel ist auf der " + rolledDice.toString + " gelandet.\n\n" + gameAsText))
     }
   }
 
@@ -70,23 +70,19 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
       Ok("Der Würfel ist auf der " + 6 + " gelandet.\n\nWähle die Figur aus mit der du laufen möchtest\n\n" + gameAsText)
     } else {
       controller.doAndPublish(controller.move1((6)))
-      Ok("Der Würfel ist auf der " + 6.toString + " gelandet.\n\n" + gameAsText)
+      Ok(views.html.game("Der Würfel ist auf der " + 6.toString + " gelandet.\n\n" + gameAsText))
     }
   }
 
   def setPieceToMove(pieceToMove: Int) = Action {
     controller.game.pieceChooser = pieceToMove;
     controller.move1(rolledDice)
-    Ok(gameAsText)
+    Ok(views.html.game(gameAsText))
   }
 
   def getPlayerturn() = Action {
     val playerturn = getPlayerturnAsChar(controller.game.playerturn)
-    Ok(playerturn.toString)
-  }
-
-  def showMesh() = Action{
-    Ok(controller.game.mesh.mesh())
+    Ok(views.html.game(playerturn.toString))
   }
 
   def game() = Action {
@@ -94,8 +90,6 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
   }
 
   private def gameAsText = {
-
-
     playerturnAsChar + " hat gerade gewürfelt.\n\n" + controller.game.mesh.mesh()
   }
 

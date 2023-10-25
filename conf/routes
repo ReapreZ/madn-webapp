@@ -18,7 +18,6 @@ GET     /roll                       controllers.HomeController.roll
 
 GET     /turn/:piece                controllers.HomeController.setPieceToMove(piece:Int)
 
-GET     /mesh                       controllers.HomeController.showMesh
 
 GET     /about                      controllers.HomeController.about()
 

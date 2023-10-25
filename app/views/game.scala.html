@@ -1,9 +1,29 @@
 @(mesh: String)
 
 @main(title = "Game", currentPath = "/game") {
+<htlm>
+    <head>
+        <style>
+        .button-container {
+            display: flex;
+        }
 
-<div>
-    <h1>@mesh</h1>
-</div>
+        button {
+            margin-right: 10px;
+        }
+    </style>
+    <div>
+        <pre style="font-size: 22px">@mesh</pre>
+    </div>
 
+        <div class="button-container">
+            <form action="@routes.HomeController.roll" method="GET">
+                <button type="submit">Roll</button>
+            </form>
+            <form action="@routes.HomeController.moveMagic" method="GET">
+                <button type="submit">Magic Dice</button>
+            </form>
+        </div>
+    </head>
+</htlm>
 }
