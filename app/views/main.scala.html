@@ -4,46 +4,23 @@
 <head>
     <title>@title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        .topnav {
-            overflow: hidden;
-            background-color: #333;
-        }
-
-        .topnav a {
-            float: left;
-            color: #f5f5dc;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-            font-size: 17px;
-        }
-
-        .topnav a:hover {
-            background-color: #f5f5dc;
-            color: black;
-        }
-
-        .topnav a.active {
-            background-color: #04AA6D;
-            color: white;
-        }
-    </style>
+    <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/main.css")">
+    
 </head>
 <body>
 
 <div class="topnav">
-    <a @if(currentPath == "/") {class="active"} href="@routes.HomeController.index()">Home</a>
-    <a @if(currentPath == "/game") {class="active"} href="@routes.HomeController.game">Game</a>
-    <a @if(currentPath == "/about") {class="active"} href="@routes.HomeController.about()">About</a>
+    <nav>
+        <a @if(currentPath == "/") {class="active"} href="@routes.HomeController.index()">Home</a>
+        <a @if(currentPath == "/game") {class="active"} href="@routes.HomeController.game">Game</a>
+        <a @if(currentPath == "/about") {class="active"} href="@routes.HomeController.about()">About</a>
+        <a href="">Rules</a>
+        <span></span>
+    </nav>
 </div>
 
 <section class="content">@content</section>
+
 
 </body>
 </html>
