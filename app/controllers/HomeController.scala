@@ -25,9 +25,6 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
   var rolledDice = 1
   var playerturnAsChar = 'A';
 
-
-
-
   
   /**
    * Create an Action to render an HTML page.
@@ -66,7 +63,9 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     }
   }
   def moveMagic() = Action {
-    if (controller.game.piecesOutList(controller.game.playerturn) >= 1) {
+    val playerturn = controller.game.getPlayerturn
+    playerturnAsChar = getPlayerturnAsChar(playerturn)
+    if (controller.game.piecesOutList(playerturn) >= 1) {
       Ok(views.html.game("Der Würfel ist auf der " + 6 +
         " gelandet.\n\nWähle die Figur aus mit der du laufen möchtest\n\n" + gameAsText))
     } else {
