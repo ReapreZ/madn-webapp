@@ -1,0 +1,763 @@
+2023.10.27 23:31:22 INFO  Started: Metals version 1.1.0 in folders 'C:\Users\clx48\VSCodeProjects\madn-webapp' for client Visual Studio Code 1.83.1.
+2023.10.27 23:31:28 INFO  no build target found for C:\Users\clx48\VSCodeProjects\madn-webapp\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.1
+2023.10.27 23:31:29 ERROR Unexpected error initializing server: 
+scala.concurrent.Future$$anon$2: Future.filter predicate is not satisfied
+
+2023.10.27 23:31:36 INFO  running 'C:\Program Files\Java\jdk-11\bin\java.exe -Djline.terminal=jline.UnsupportedTerminal -Dsbt.log.noformat=true -Dfile.encoding=UTF-8 -jar C:\Users\clx48\AppData\Local\Temp\metals5577121421844030755\sbt-launch.jar -Dbloop.export-jar-classifiers=sources bloopInstall'
+2023.10.27 23:31:38 INFO  [info] welcome to sbt 1.9.6 (Oracle Corporation Java 11.0.20)
+2023.10.27 23:31:40 INFO  [info] loading settings for project madn-webapp-build-build-build from metals.sbt ...
+2023.10.27 23:31:40 INFO  [info] loading project definition from C:\Users\clx48\VSCodeProjects\madn-webapp\project\project\project
+2023.10.27 23:31:44 INFO  [info] loading settings for project madn-webapp-build-build from metals.sbt ...
+2023.10.27 23:31:44 INFO  [info] loading project definition from C:\Users\clx48\VSCodeProjects\madn-webapp\project\project
+Okt. 27, 2023 11:31:47 NACHM. org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFORMATION: Unsupported notification method: $/setTrace
+2023.10.27 23:31:48 INFO  [success] Generated .bloop\madn-webapp-build-build.json
+2023.10.27 23:31:48 INFO  [success] Total time: 4 s, completed 27.10.2023, 23:31:48
+2023.10.27 23:31:49 INFO  [info] loading settings for project madn-webapp-build from metals.sbt,plugins.sbt ...
+2023.10.27 23:31:49 INFO  [info] loading project definition from C:\Users\clx48\VSCodeProjects\madn-webapp\project
+2023.10.27 23:31:53 INFO  [success] Generated .bloop\madn-webapp-build.json
+2023.10.27 23:31:53 INFO  [success] Total time: 4 s, completed 27.10.2023, 23:31:53
+2023.10.27 23:31:56 INFO  [info] loading settings for project root from build.sbt ...
+2023.10.27 23:31:56 INFO  [info]   __              __
+2023.10.27 23:31:56 INFO  [info]   \ \     ____   / /____ _ __  __
+2023.10.27 23:31:56 INFO  [info]    \ \   / __ \ / // __ `// / / /
+2023.10.27 23:31:56 INFO  [info]    / /  / /_/ // // /_/ // /_/ /
+2023.10.27 23:31:56 INFO  [info]   /_/  / .___//_/ \__,_/ \__, /
+2023.10.27 23:31:56 INFO  [info]       /_/               /____/
+2023.10.27 23:31:56 INFO  [info] 
+2023.10.27 23:31:56 INFO  [info] Version 2.9.0-RC3 running Java 11.0.20
+2023.10.27 23:31:56 INFO  [info] 
+2023.10.27 23:31:56 INFO  [info] Play is run entirely by the community. Please consider contributing and/or donating:
+2023.10.27 23:31:56 INFO  [info] https://www.playframework.com/sponsors
+2023.10.27 23:31:56 INFO  [info] 
+2023.10.27 23:31:59 INFO  [success] Generated .bloop\root.json
+2023.10.27 23:31:59 INFO  [success] Generated .bloop\root-test.json
+2023.10.27 23:31:59 INFO  [success] Total time: 3 s, completed 27.10.2023, 23:31:59
+2023.10.27 23:31:59 INFO  time: ran 'sbt bloopInstall' in 22s
+2023.10.27 23:31:59 INFO  Attempting to connect to the build server...
+2023.10.27 23:31:59 INFO  Setting up current java home C:\Program Files\Java\jdk-11 in C:\Users\clx48\.bloop\bloop.json
+2023.10.27 23:32:05 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at C:\Users\clx48\VSCodeProjects\madn-webapp\.metals\bsp.trace.json or C:\Users\clx48\AppData\Local\scalameta\metals\cache\bsp.trace.json
+2023.10.27 23:32:08 INFO  Attempting to connect to the build server...
+2023.10.27 23:32:08 INFO  Bloop uses C:\Program Files\Java\jdk-11 defined at C:\Users\clx48\.bloop\bloop.json
+2023.10.27 23:32:08 INFO  Attempting to connect to the build server...
+2023.10.27 23:32:08 INFO  Bloop uses C:\Program Files\Java\jdk-11 defined at C:\Users\clx48\.bloop\bloop.json
+2023.10.27 23:32:08 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at C:\Users\clx48\VSCodeProjects\madn-webapp\project\.metals\bsp.trace.json or C:\Users\clx48\AppData\Local\scalameta\metals\cache\bsp.trace.json
+2023.10.27 23:32:08 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at C:\Users\clx48\VSCodeProjects\madn-webapp\project\project\.metals\bsp.trace.json or C:\Users\clx48\AppData\Local\scalameta\metals\cache\bsp.trace.json
+2023.10.27 23:32:08 INFO  time: Connected to build server in 9.06s
+2023.10.27 23:32:08 INFO  Connected to Build server: Bloop v1.5.11
+2023.10.27 23:32:08 INFO  time: Imported build in 0.18s
+2023.10.27 23:32:18 INFO  time: indexed workspace in 9.19s
+2023.10.27 23:32:18 INFO  compiling root (9 scala sources and 1 java source)
+2023.10.27 23:32:27 INFO  compiling root-test (1 scala source)
+2023.10.27 23:32:27 INFO  time: compiled root in 9.14s
+2023.10.27 23:32:29 INFO  time: compiled root-test in 1.47s
+2023.10.27 23:33:48 INFO  Shutting down server
+2023.10.27 23:33:48 INFO  shutting down Metals
+2023.10.27 23:33:48 INFO  Shut down connection with build server.
+2023.10.27 23:33:48 INFO  Shut down connection with build server.
+2023.10.27 23:33:48 INFO  Shut down connection with build server.
+2023.10.27 23:33:48 INFO  Exiting server
+2023.10.27 23:34:01 INFO  Started: Metals version 1.1.0 in folders 'C:\Users\clx48\VSCodeProjects\madn-webapp' for client Visual Studio Code 1.83.1.
+2023.10.27 23:34:03 ERROR Unexpected error initializing server: 
+scala.concurrent.Future$$anon$2: Future.filter predicate is not satisfied
+
+2023.10.27 23:34:08 INFO  no build target found for C:\Users\clx48\VSCodeProjects\madn-webapp\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.1
+2023.10.27 23:34:17 INFO  running 'C:\Program Files\Java\jdk-11\bin\java.exe -Djline.terminal=jline.UnsupportedTerminal -Dsbt.log.noformat=true -Dfile.encoding=UTF-8 -jar C:\Users\clx48\AppData\Local\Temp\metals1746244031691810997\sbt-launch.jar -Dbloop.export-jar-classifiers=sources bloopInstall'
+2023.10.27 23:34:18 INFO  [info] welcome to sbt 1.9.6 (Oracle Corporation Java 11.0.20)
+2023.10.27 23:34:18 INFO  [info] loading settings for project madn-webapp-build-build-build from metals.sbt ...
+2023.10.27 23:34:20 INFO  [info] loading project definition from C:\Users\clx48\VSCodeProjects\madn-webapp\project\project\project
+2023.10.27 23:34:21 INFO  [info] loading settings for project madn-webapp-build-build from metals.sbt ...
+2023.10.27 23:34:21 INFO  [info] loading project definition from C:\Users\clx48\VSCodeProjects\madn-webapp\project\project
+2023.10.27 23:34:25 INFO  [success] Generated .bloop\madn-webapp-build-build.json
+2023.10.27 23:34:25 INFO  [success] Total time: 4 s, completed 27.10.2023, 23:34:25
+2023.10.27 23:34:27 INFO  [info] loading settings for project madn-webapp-build from metals.sbt,plugins.sbt ...
+2023.10.27 23:34:27 INFO  [info] loading project definition from C:\Users\clx48\VSCodeProjects\madn-webapp\project
+2023.10.27 23:34:30 INFO  [success] Generated .bloop\madn-webapp-build.json
+2023.10.27 23:34:30 INFO  [success] Total time: 3 s, completed 27.10.2023, 23:34:30
+2023.10.27 23:34:33 INFO  [info] loading settings for project root from build.sbt ...
+2023.10.27 23:34:33 INFO  [info]   __              __
+2023.10.27 23:34:33 INFO  [info]   \ \     ____   / /____ _ __  __
+2023.10.27 23:34:33 INFO  [info]    \ \   / __ \ / // __ `// / / /
+2023.10.27 23:34:33 INFO  [info]    / /  / /_/ // // /_/ // /_/ /
+2023.10.27 23:34:33 INFO  [info]   /_/  / .___//_/ \__,_/ \__, /
+2023.10.27 23:34:33 INFO  [info]       /_/               /____/
+2023.10.27 23:34:33 INFO  [info] 
+2023.10.27 23:34:33 INFO  [info] Version 2.9.0-RC3 running Java 11.0.20
+2023.10.27 23:34:33 INFO  [info] 
+2023.10.27 23:34:33 INFO  [info] Play is run entirely by the community. Please consider contributing and/or donating:
+2023.10.27 23:34:33 INFO  [info] https://www.playframework.com/sponsors
+2023.10.27 23:34:33 INFO  [info] 
+2023.10.27 23:34:35 INFO  [success] Generated .bloop\root.json
+2023.10.27 23:34:35 INFO  [success] Generated .bloop\root-test.json
+2023.10.27 23:34:35 INFO  [success] Total time: 2 s, completed 27.10.2023, 23:34:36
+2023.10.27 23:34:36 INFO  time: ran 'sbt bloopInstall' in 19s
+2023.10.27 23:34:36 INFO  Attempting to connect to the build server...
+2023.10.27 23:34:36 INFO  Bloop uses C:\Program Files\Java\jdk-11 defined at C:\Users\clx48\.bloop\bloop.json
+2023.10.27 23:34:36 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at C:\Users\clx48\VSCodeProjects\madn-webapp\.metals\bsp.trace.json or C:\Users\clx48\AppData\Local\scalameta\metals\cache\bsp.trace.json
+2023.10.27 23:34:36 INFO  Attempting to connect to the build server...
+2023.10.27 23:34:36 INFO  Bloop uses C:\Program Files\Java\jdk-11 defined at C:\Users\clx48\.bloop\bloop.json
+2023.10.27 23:34:36 INFO  Attempting to connect to the build server...
+2023.10.27 23:34:36 INFO  Bloop uses C:\Program Files\Java\jdk-11 defined at C:\Users\clx48\.bloop\bloop.json
+2023.10.27 23:34:36 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at C:\Users\clx48\VSCodeProjects\madn-webapp\project\project\.metals\bsp.trace.json or C:\Users\clx48\AppData\Local\scalameta\metals\cache\bsp.trace.json
+2023.10.27 23:34:37 INFO  tracing is disabled for protocol BSP, to enable tracing of incoming and outgoing JSON messages create an empty file at C:\Users\clx48\VSCodeProjects\madn-webapp\project\.metals\bsp.trace.json or C:\Users\clx48\AppData\Local\scalameta\metals\cache\bsp.trace.json
+2023.10.27 23:34:37 INFO  time: Connected to build server in 0.3s
+2023.10.27 23:34:37 INFO  Connected to Build server: Bloop v1.5.11
+2023.10.27 23:34:37 INFO  time: Imported build in 0.19s
+2023.10.27 23:34:47 INFO  time: indexed workspace in 9.97s
+2023.10.27 23:34:50 INFO  compiling root (9 scala sources and 1 java source)
+2023.10.27 23:34:54 INFO  time: compiled root in 4.65s
+2023.10.27 23:34:54 INFO  compiling root-test (1 scala source)
+2023.10.27 23:34:55 INFO  time: compiled root-test in 1.02s
+Okt. 27, 2023 11:34:57 NACHM. org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFORMATION: Unsupported notification method: $/setTrace
+2023.10.27 23:36:12 ERROR Build server error: No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:36:12 INFO  {
+  "jsonrpc": "2.0",
+  "id": "22",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.27 23:36:34 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:36:34 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:36:34 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:36:34 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:36:34 INFO  {
+  "jsonrpc": "2.0",
+  "id": "25",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.27 23:37:04 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:37:04 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:37:04 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:37:04 INFO  {
+  "jsonrpc": "2.0",
+  "id": "31",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.27 23:37:04 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:37:56 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:37:56 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:37:56 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:37:56 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:37:56 INFO  {
+  "jsonrpc": "2.0",
+  "id": "36",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.27 23:38:35 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:38:35 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:38:35 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:38:35 INFO  {
+  "jsonrpc": "2.0",
+  "id": "40",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.27 23:38:35 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:40:56 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:40:56 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:40:56 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:40:56 INFO  {
+  "jsonrpc": "2.0",
+  "id": "47",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.27 23:40:56 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:41:35 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:41:35 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:41:35 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:41:35 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:41:35 INFO  {
+  "jsonrpc": "2.0",
+  "id": "51",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.27 23:45:41 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:45:41 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:45:41 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:45:41 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:45:41 INFO  {
+  "jsonrpc": "2.0",
+  "id": "60",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.27 23:47:40 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:47:40 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:47:40 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:47:40 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:47:40 INFO  {
+  "jsonrpc": "2.0",
+  "id": "66",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.27 23:48:54 ERROR Build server error: No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/project/?id=madn-webapp-build)
+2023.10.27 23:48:54 INFO  {
+  "jsonrpc": "2.0",
+  "id": "13",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/project/?id\u003dmadn-webapp-build)"
+  }
+}
+2023.10.27 23:48:57 INFO  time: code lens generation in 2.95s
+2023.10.27 23:51:14 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:51:14 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:51:14 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:51:14 INFO  {
+  "jsonrpc": "2.0",
+  "id": "73",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.27 23:51:14 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:52:59 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:52:59 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:52:59 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:52:59 INFO  {
+  "jsonrpc": "2.0",
+  "id": "79",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.27 23:52:59 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:54:06 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:54:06 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:54:06 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:54:06 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:54:06 INFO  {
+  "jsonrpc": "2.0",
+  "id": "84",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.27 23:55:57 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:55:57 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:55:57 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:55:57 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:55:57 INFO  {
+  "jsonrpc": "2.0",
+  "id": "90",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.27 23:59:40 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:59:40 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:59:40 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.27 23:59:40 INFO  {
+  "jsonrpc": "2.0",
+  "id": "98",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.27 23:59:40 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:00:27 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:00:27 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:00:27 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:00:27 INFO  {
+  "jsonrpc": "2.0",
+  "id": "102",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 00:00:27 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:00:38 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:00:38 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:00:38 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:00:38 INFO  {
+  "jsonrpc": "2.0",
+  "id": "107",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 00:00:38 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:01:19 INFO  {
+  "jsonrpc": "2.0",
+  "id": "17",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/project/?id\u003dmadn-webapp-build)"
+  }
+}
+2023.10.28 00:09:50 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:09:50 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:09:50 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:09:50 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:09:50 INFO  {
+  "jsonrpc": "2.0",
+  "id": "120",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 00:12:31 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:12:31 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:12:31 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:12:31 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:12:31 INFO  {
+  "jsonrpc": "2.0",
+  "id": "126",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 00:12:44 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:12:44 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:12:44 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:12:44 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:12:44 INFO  {
+  "jsonrpc": "2.0",
+  "id": "131",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 00:13:24 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:13:24 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:13:24 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:13:24 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:13:24 INFO  {
+  "jsonrpc": "2.0",
+  "id": "135",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 00:15:57 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:15:57 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:15:57 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:15:57 INFO  {
+  "jsonrpc": "2.0",
+  "id": "142",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 00:15:57 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:20:01 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:20:01 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:20:01 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:20:01 INFO  {
+  "jsonrpc": "2.0",
+  "id": "150",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 00:20:01 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:33:27 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:33:27 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:33:27 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:33:27 INFO  {
+  "jsonrpc": "2.0",
+  "id": "164",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 00:33:27 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:34:24 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:34:24 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:34:24 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:34:24 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:34:24 INFO  {
+  "jsonrpc": "2.0",
+  "id": "169",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 00:34:35 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:34:35 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:34:35 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:34:35 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:34:35 INFO  {
+  "jsonrpc": "2.0",
+  "id": "172",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 00:35:34 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:35:34 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:35:34 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:35:34 INFO  {
+  "jsonrpc": "2.0",
+  "id": "178",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 00:35:34 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:35:46 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:35:46 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:35:46 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:35:46 INFO  {
+  "jsonrpc": "2.0",
+  "id": "183",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 00:35:46 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:35:52 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:35:52 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:35:52 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:35:52 INFO  {
+  "jsonrpc": "2.0",
+  "id": "185",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 00:35:52 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:36:07 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:36:07 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:36:07 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:36:07 INFO  {
+  "jsonrpc": "2.0",
+  "id": "191",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 00:36:07 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:36:42 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:36:42 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:36:42 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:36:42 INFO  {
+  "jsonrpc": "2.0",
+  "id": "196",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 00:36:42 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:37:22 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:37:22 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:37:22 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:37:22 INFO  {
+  "jsonrpc": "2.0",
+  "id": "200",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 00:37:22 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:38:37 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:38:37 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:38:37 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:38:37 INFO  {
+  "jsonrpc": "2.0",
+  "id": "206",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 00:38:37 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:38:58 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:38:58 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:38:58 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:38:58 INFO  {
+  "jsonrpc": "2.0",
+  "id": "210",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 00:38:58 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:43:28 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:43:28 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:43:28 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:43:28 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:43:28 INFO  {
+  "jsonrpc": "2.0",
+  "id": "218",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 00:43:41 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:43:41 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:43:41 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:43:41 INFO  {
+  "jsonrpc": "2.0",
+  "id": "223",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 00:43:41 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:43:53 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:43:53 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:43:53 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:43:53 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:43:53 INFO  {
+  "jsonrpc": "2.0",
+  "id": "226",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 00:53:27 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:53:27 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:53:27 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:53:27 INFO  {
+  "jsonrpc": "2.0",
+  "id": "240",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 00:53:27 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:58:26 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:58:26 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:58:26 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:58:26 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:58:26 INFO  {
+  "jsonrpc": "2.0",
+  "id": "249",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 00:58:42 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:58:42 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:58:42 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 00:58:42 INFO  {
+  "jsonrpc": "2.0",
+  "id": "254",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 00:58:42 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:02:58 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:02:58 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:02:58 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:02:58 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:02:58 INFO  {
+  "jsonrpc": "2.0",
+  "id": "261",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 01:07:38 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:07:38 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:07:38 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:07:38 INFO  {
+  "jsonrpc": "2.0",
+  "id": "271",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 01:07:38 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:09:09 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:09:09 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:09:09 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:09:09 INFO  {
+  "jsonrpc": "2.0",
+  "id": "276",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 01:09:09 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:13:37 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:13:37 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:13:37 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:13:37 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:13:37 INFO  {
+  "jsonrpc": "2.0",
+  "id": "285",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 01:13:55 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:13:55 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:13:55 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:13:55 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:13:55 INFO  {
+  "jsonrpc": "2.0",
+  "id": "289",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 01:27:12 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:27:12 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:27:12 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:27:12 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:27:12 INFO  {
+  "jsonrpc": "2.0",
+  "id": "303",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 01:27:54 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:27:54 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:27:54 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:27:54 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:27:54 INFO  {
+  "jsonrpc": "2.0",
+  "id": "308",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 01:29:04 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:29:04 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:29:04 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:29:04 INFO  {
+  "jsonrpc": "2.0",
+  "id": "313",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 01:29:04 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:29:18 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:29:18 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:29:18 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:29:18 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:29:18 INFO  {
+  "jsonrpc": "2.0",
+  "id": "316",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 01:35:21 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:35:21 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:35:21 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:35:21 INFO  {
+  "jsonrpc": "2.0",
+  "id": "327",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 01:35:21 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:37:46 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:37:46 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:37:46 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:37:46 INFO  {
+  "jsonrpc": "2.0",
+  "id": "334",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 01:37:46 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:38:54 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:38:54 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:38:54 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:38:54 INFO  {
+  "jsonrpc": "2.0",
+  "id": "339",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 01:38:54 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:48:47 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:48:47 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:48:47 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 01:48:47 INFO  {
+  "jsonrpc": "2.0",
+  "id": "353",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 01:48:47 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 02:12:43 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 02:12:43 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 02:12:43 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
+2023.10.28 02:12:43 INFO  {
+  "jsonrpc": "2.0",
+  "id": "367",
+  "error": {
+    "code": -32600,
+    "message": "No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id\u003droot)"
+  }
+}
+2023.10.28 02:12:43 ERROR No project associated with Uri(file:/C:/Users/clx48/VSCodeProjects/madn-webapp/?id=root)
