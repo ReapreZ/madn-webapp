@@ -1,16 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght&700&display=swap');
 *
-body
+body.index-body
 {
     display:flex;
     justify-content: center;
     align-items: center;
     min-height: 50vh;
     background: white;
-    padding-top: 50px;
-
+    padding-top: 10px;
 }
-h1{
+h1.welcome{
     font-family: 'Poppins', sans-serif;
     position: relative;
     font-size: 5vw;
@@ -18,7 +17,7 @@ h1{
     -webkit-text-stroke: 0.2vw grey;
     text-transform: uppercase;
     }
-    h1::before
+    h1.welcome::before
     {
     white-space : nowrap;
     content: attr(data-text);
@@ -45,13 +44,13 @@ h1{
         }
     }
 
-div
+div.madn-image
 {
     text-align:center;
 }
     
     
-h2
+/*h2
 {
     font-family: 'Poppins';
     font-size: 60px;
@@ -68,4 +67,4 @@ p
     flex-direction: column;
     align-items: center;
     line-height: 200%;
-}
+}*/

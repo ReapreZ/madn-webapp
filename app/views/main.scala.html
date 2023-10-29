@@ -7,14 +7,18 @@
     <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/main.css")">
     
 </head>
-<body>
+<body class="main-body">
 
 <div class="topnav">
-    <nav>
+    <br>
+    <br>
+    <nav class="navPosition">
         <a class="index-link" @if(currentPath == "/") {class="active"} href="@routes.HomeController.index()">Home</a>
+        <a class="index-link" @if(currentPath == "/rules") {class="active"}href="@routes.HomeController.rules">Rules</a>
         <a class="index-link" @if(currentPath == "/game") {class="active"} href="@routes.HomeController.game">Game</a>
+        <a class="index-link" @if(currentPath == "/feedback") {class="active"}href="@routes.HomeController.feedback">Feedback</a>
         <a class="index-link" @if(currentPath == "/about") {class="active"} href="@routes.HomeController.about()">About</a>
-        <span></span>
+        <span class="index-span"></span>
     </nav>
 </div>
 

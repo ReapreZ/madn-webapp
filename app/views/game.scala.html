@@ -4,11 +4,15 @@
 <htlm>
     <head>
         <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/game.css")">
+        <br><br><br><br><br>
+        <h1 class="game-header">Game</h1>
     <div class="mesh">
         <pre style="font-size: 22px">@mesh</pre>
     </div>
 
-    <body>
+
+    <body class="game-body">
+        <br><br>
         <div class="button-container-dice">
             <a class="game-link-dice" style="--clr:#1e9bff" href="@routes.HomeController.roll"><span>Roll Dice</span></a>
             <a class="game-link-dice" style="--clr:#1e9bff" href="@routes.HomeController.moveMagic"><span>Roll Magic Dice</span></a>

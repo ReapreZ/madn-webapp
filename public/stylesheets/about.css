@@ -1,29 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght&700&display=swap');
-*
-body
+h1.about-header { 
+    font-family: 'Poppins';
+    font-size: 48px;
+    text-align: center;
+    color:red;
+}
+
+p.about
 {
     display:flex;
     justify-content: center;
     align-items: center;
-    min-height: 50vh;
-    background: #f5f5f5;
-
-}
-h1 {
-    font-family: 'Poppins';
-        font-size: 60px;
-        text-align: center;
-        color:red;
+    text-align: center;
+    min-height: 10vh;
 }
 
+p.github-logo{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
 
-a {
+a.about-us {
+    display:flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
     color: #0078d4;
     transition: color 0.3s;
 }
 
-a:hover {
+a.about-us:hover {
     text-decoration: underline;
 }
 

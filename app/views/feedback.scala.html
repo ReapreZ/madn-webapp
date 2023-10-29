@@ -1,0 +1,29 @@
+@main(title = "Feedback", currentPath = "/feedback") {
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/feedback.css")">
+        <title>Document</title>
+    </head>
+    <br><br><br><br><br>
+    <h1 class="feedback-header">Feedback</h1>
+    <body>
+        <div class="feedback">
+            <form action="feedback">
+          
+              <label for="email" style="font-size: large;">E-Mail Adresse</label>
+              <input type="text" id="email" name="mail" placeholder="Deine E-Mail Adresse..">
+
+              <label for="feedback"style="font-size: large;">Feedback</label>
+              <textarea id="feedback" name="fb" placeholder="Schreib etwas.." style="height:200px"></textarea>
+          
+              <a class="feedback-button" style="--clr:#1e9bff"><span>Senden</span></a>
+          
+            </form>
+          </div>
+        
+    </body>
+    </html>
+}

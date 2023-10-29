@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 *
 
-body
+body.game-body
 {
     display:flex;
     justify-content: center;
@@ -10,12 +10,19 @@ body
     padding-top: 100px;
 }
 
+h1.game-header{
+    font-family: 'Poppins';
+    font-size: 48px;
+    text-align: center;
+    color:red;
+}
+
 .mesh{
     background-color: lightgrey;
   width: 1000px;
   border: 5px solid rgb(0, 0, 0);
   padding: 50px;
-  margin: 20px;
+  margin: 10px;
 }
 
 .button-container-dice{

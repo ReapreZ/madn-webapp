@@ -7,9 +7,6 @@
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index()
 
-# Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
-
 GET     /moveMagic                  controllers.HomeController.moveMagic
 
 GET     /playerturn                 controllers.HomeController.getPlayerturn
@@ -18,7 +15,14 @@ GET     /roll                       controllers.HomeController.roll
 
 GET     /turn/:piece                controllers.HomeController.setPieceToMove(piece:Int)
 
+GET     /rules                     	controllers.HomeController.rules()
+
+GET     /feedback                   controllers.HomeController.feedback()
 
 GET     /about                      controllers.HomeController.about()
 
 GET     /game                       controllers.HomeController.game
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+

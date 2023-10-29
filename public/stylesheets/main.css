@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght&700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 *
 {
     margin: 0;
@@ -7,18 +7,19 @@
     font-family: 'Poppins',sans-serif;
 }
 
-div {
+div.topnav {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
-body
+body.main-body
 {
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 70vh;
     
     background: #ffffff;
 }
@@ -29,10 +30,10 @@ body
     right: 0;
     z-index: 100;
 }
-nav
+nav.navPosition
 {
     position: relative;
-    width: 300px;
+    width: 625px;
     height: 50px;
     background: #222;
     border-radius: 8px;
@@ -46,19 +47,19 @@ nav a.index-link
     position: relative;
     display: inline-block;
     font-size: 1.5em;
-    font-weight: 400;
+    font-weight: 500;
     color: #fff;
     text-decoration: none;
-    padding: 0 18px;
+    padding: 0 26px;
     z-index: 1;
 }
 
-nav span
+nav span.index-span
 {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100px;
+    width: 125px;
     height: 100%;
     background: linear-gradient(45deg, #4f1919,#ff3333);
     border-radius: 8px;
@@ -68,15 +69,25 @@ nav span
 nav a.index-link:nth-child(1):hover~span
 {
     left: 0;
+    width: 90px;
 }
 nav a.index-link:nth-child(2):hover~span
 {
-    left: 100px;
-    
+    left: 115px;
+    width: 90px;
 }
 nav a.index-link:nth-child(3):hover~span
 {
-    left: 200px;
+    left: 240px;
+    width: 90px;
     
 }
-
+nav a.index-link:nth-child(4):hover~span
+{
+    left: 370px;
+}
+nav a.index-link:nth-child(5):hover~span
+{
+    left: 535px;
+    width: 90px;
+}

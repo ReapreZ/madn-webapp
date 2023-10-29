@@ -1,0 +1,43 @@
+h1.feedback-header{
+    font-family: 'Poppins';
+    font-size: 48px;
+    text-align: center;
+    color:red;
+}
+
+input[type=text], select, textarea {
+    width: 100%; 
+    padding: 12px; 
+    border: 5px solid #000000; 
+    border-radius: 4px; 
+    box-sizing: border-box; 
+    margin-top: 6px; 
+    margin-bottom: 16px; 
+    resize: vertical 
+  }
+
+  a.feedback-button {
+    background: #000;
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5em;
+    letter-spacing: 0.1em;
+    font-weight: 400;
+    padding: 5px 20px;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+  
+  a.feedback-button:hover {
+    background: var(--clr);
+    letter-spacing: 0.25em;
+    box-shadow: 0 0 35px var(--clr);
+  }
+  
+  .feedback {
+    margin: 10px;
+    border-radius: 5px;
+    border: 5px solid #000000;
+    background-color: #f2f2f2;
+    padding: 50px;
+  }

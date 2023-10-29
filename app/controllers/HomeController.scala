@@ -42,6 +42,16 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     Ok(views.html.about())
   }
 
+  def rules() = Action { implicit request: Request[AnyContent] =>
+    val currentPath = request.path
+    Ok(views.html.rules())
+  }
+
+   def feedback() = Action { implicit request: Request[AnyContent] =>
+    val currentPath = request.path
+    Ok(views.html.feedback())
+  }
+
 
   def roll() = Action {
     val playerturn = controller.game.getPlayerturn
