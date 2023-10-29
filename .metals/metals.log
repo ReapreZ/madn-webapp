@@ -1,0 +1,6 @@
+2023.10.29 14:21:16 INFO  Started: Metals version 1.1.0 in folders 'C:\Users\clx\VSCode_Projects\MADN_WEBAPP\madn-webapp' for client Visual Studio Code 1.83.1.
+2023.10.29 14:21:16 ERROR Unexpected error initializing server: 
+scala.concurrent.Future$$anon$2: Future.filter predicate is not satisfied
+
+Okt. 29, 2023 2:21:36 NACHM. org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFORMATION: Unsupported notification method: $/setTrace

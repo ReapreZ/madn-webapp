@@ -11,9 +11,9 @@
 
 <div class="topnav">
     <nav>
-        <a @if(currentPath == "/") {class="active"} href="@routes.HomeController.index()">Home</a>
-        <a @if(currentPath == "/game") {class="active"} href="@routes.HomeController.game">Game</a>
-        <a @if(currentPath == "/about") {class="active"} href="@routes.HomeController.about()">About</a>
+        <a class="index-link" @if(currentPath == "/") {class="active"} href="@routes.HomeController.index()">Home</a>
+        <a class="index-link" @if(currentPath == "/game") {class="active"} href="@routes.HomeController.game">Game</a>
+        <a class="index-link" @if(currentPath == "/about") {class="active"} href="@routes.HomeController.about()">About</a>
         <span></span>
     </nav>
 </div>
