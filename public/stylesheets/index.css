@@ -9,10 +9,11 @@ body
     background: white;
 
 }
+
 h1{
     font-family: 'Poppins', sans-serif;
     position: relative;
-    font-size: 7vw;
+    font-size: 5vw;
     color: white;
     -webkit-text-stroke: 0.2vw grey;
     text-transform: uppercase;
@@ -26,9 +27,9 @@ h1{
     left: 0;
     width: 0;
     height: 100%;
-    color: rgb(8, 137, 241);
-    -webkit-text-stroke: 0vw grey;
-    border-right: 2px solid rgb(8, 137, 241);
+    color: rgb(241, 8, 8);
+    -webkit-text-stroke: 0vw #222;
+    border-right: 2px solid rgb(241, 8, 8);
     overflow: hidden;
     animation: animate 6s linear infinite;
     }

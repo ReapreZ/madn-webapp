@@ -5,22 +5,34 @@
     <title>@title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/main.css")">
+    <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/index.css")">
     
 </head>
 <body>
-
-<div class="topnav">
-    <nav>
-        <a @if(currentPath == "/") {class="active"} href="@routes.HomeController.index()">Home</a>
-        <a @if(currentPath == "/game") {class="active"} href="@routes.HomeController.game">Game</a>
-        <a @if(currentPath == "/about") {class="active"} href="@routes.HomeController.about()">About</a>
-        <a href="">Rules</a>
-        <span></span>
-    </nav>
+<div class="container">
+    <div class="topnav">
+        <nav>
+            <a @if(currentPath == "/") {class="active"} href="@routes.HomeController.index()">Home</a>
+            <a href="">Rules</a>
+            <a @if(currentPath == "/game") {class="active"} href="@routes.HomeController.game">Game</a>
+            <a @if(currentPath == "/about") {class="active"} href="@routes.HomeController.about()">About</a>
+            <a href="">Feedback</a>
+            <span></span>
+        </nav>
+    </div>
+    <section class="content">
+        <!-- Hier ist Ihr h1-Element -->
+        <h1 data-text="Welcome to MADN">Welcome to MADN</h1>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+        <div>
+            <img src="https://t3.ftcdn.net/jpg/00/24/56/04/360_F_24560439_X0LVuVjEeNIWMjqYru2jKEg8NYkkNaMk.jpg" alt="MADN" width="600" height="200">
+        </div>
+    </section>
 </div>
-
-<section class="content">@content</section>
-
-
 </body>
 </html>

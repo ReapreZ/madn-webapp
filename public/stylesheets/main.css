@@ -7,21 +7,35 @@
     font-family: 'Poppins',sans-serif;
 }
 
-body
-{
+.container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    
-    background: #000;
+    justify-content: center;
+    min-height: 50vh;
+    background: white;
 }
+
+.topnav {
+    margin-bottom: 100px;
+}
+
+h1 {
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    font-size: 5vw;
+    color: white;
+    -webkit-text-stroke: 0.2vw grey;
+    text-transform: uppercase;
+}
+
 
 nav
 {
     position: relative;
-    width: 500px;
+    width: 625px;
     height: 50px;
-    background: #222;
+    background: #707070;
     border-radius: 8px;
     display: flex;
     justify-content: center;
@@ -34,7 +48,7 @@ nav a
     display: inline-block;
     font-size: 1.5em;
     font-weight: 500;
-    color: #fff;
+    color: #ffffff;
     text-decoration: none;
     padding: 0 28px;
     z-index: 1;
@@ -69,4 +83,8 @@ nav a:nth-child(3):hover~span
 nav a:nth-child(4):hover~span
 {
     left: 375px;
+}
+nav a:nth-child(5):hover~span
+{
+    left: 500px;
 }
