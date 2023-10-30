@@ -85,6 +85,7 @@ nav a.index-link:nth-child(3):hover~span
 nav a.index-link:nth-child(4):hover~span
 {
     left: 370px;
+    width: 130px;
 }
 nav a.index-link:nth-child(5):hover~span
 {
