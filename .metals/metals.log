@@ -73,3 +73,35 @@ scala.concurrent.Future$$anon$2: Future.filter predicate is not satisfied
 2023.10.29 20:13:29 INFO  Shutting down server
 2023.10.29 20:13:29 INFO  shutting down Metals
 2023.10.29 20:13:29 INFO  Exiting server
+2023.10.30 13:16:13 INFO  Started: Metals version 1.1.0 in folders 'C:\Users\clx\VSCode_Projects\MADN_WEBAPP\madn-webapp' for client Visual Studio Code 1.83.1.
+2023.10.30 13:16:15 ERROR Unexpected error initializing server: 
+scala.concurrent.Future$$anon$2: Future.filter predicate is not satisfied
+
+Okt. 30, 2023 1:18:05 NACHM. org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+INFORMATION: Unsupported notification method: $/setTrace
+2023.10.30 14:13:58 INFO  no build target found for C:\Users\clx\VSCode_Projects\MADN_WEBAPP\madn-webapp\app\controllers\HomeController.scala. Using presentation compiler with project's scala-library version: 3.3.1
+2023.10.30 14:14:17 WARN  no build target for: C:\Users\clx\VSCode_Projects\MADN_WEBAPP\madn-webapp\app\controllers\HomeController.scala
+2023.10.30 14:14:21 WARN  no build target for: C:\Users\clx\VSCode_Projects\MADN_WEBAPP\madn-webapp\app\controllers\HomeController.scala
+2023.10.30 14:14:28 WARN  no build target for: C:\Users\clx\VSCode_Projects\MADN_WEBAPP\madn-webapp\app\controllers\HomeController.scala
+Exception in thread "pool-3-thread-1" java.lang.InterruptedException
+	at scala.meta.internal.metals.FutureCancelToken.checkCanceled(FutureCancelToken.scala:29)
+	at scala.meta.internal.pc.CompilerAccess.onCompilerJobQueue$$anonfun$1(CompilerAccess.scala:230)
+	at scala.meta.internal.pc.CompilerJobQueue$Job.run(CompilerJobQueue.scala:152)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+2023.10.30 14:14:28 WARN  Using indexes to guess the definition of rolledDice
+2023.10.30 14:14:30 WARN  Using indexes to guess the definition of controller
+Exception in thread "pool-3-thread-2" java.lang.InterruptedException
+	at scala.meta.internal.metals.FutureCancelToken.checkCanceled(FutureCancelToken.scala:29)
+	at scala.meta.internal.pc.CompilerAccess.onCompilerJobQueue$$anonfun$1(CompilerAccess.scala:230)
+	at scala.meta.internal.pc.CompilerJobQueue$Job.run(CompilerJobQueue.scala:152)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+2023.10.30 14:14:31 WARN  Using indexes to guess the definition of rolledDice
+2023.10.30 14:14:34 WARN  no build target for: C:\Users\clx\VSCode_Projects\MADN_WEBAPP\madn-webapp\app\controllers\HomeController.scala
+2023.10.30 14:15:05 WARN  no build target for: C:\Users\clx\VSCode_Projects\MADN_WEBAPP\madn-webapp\app\controllers\HomeController.scala
+2023.10.30 14:29:19 INFO  Shutting down server
+2023.10.30 14:29:19 INFO  shutting down Metals
+2023.10.30 14:29:19 INFO  Exiting server

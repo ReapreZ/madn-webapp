@@ -57,7 +57,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     val playerturn = controller.game.getPlayerturn
     playerturnAsChar = getPlayerturnAsChar(playerturn)
     rolledDice = dice.diceRandom(6)
-    if((controller.game.piecesOutList(playerturn) >= 1 && rolledDice == 6) || controller.game.piecesOutList(playerturn) > 1) {
+    if((controller.game.piecesOutList(playerturn-1) >= 1 && rolledDice == 6) || controller.game.piecesOutList(playerturn-1) > 1) {
       Ok(views.html.game("Der Würfel ist auf der " + rolledDice +
         " gelandet.\n\nWähle die Figur aus mit der du laufen möchtest\n\n"  + gameAsText))
     } else {
@@ -73,9 +73,10 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     }
   }
   def moveMagic() = Action {
+    rolledDice = 6
     val playerturn = controller.game.getPlayerturn
     playerturnAsChar = getPlayerturnAsChar(playerturn)
-    if (controller.game.piecesOutList(playerturn) >= 1) {
+    if (controller.game.piecesOutList(playerturn-1) >= 1) {
       Ok(views.html.game("Der Würfel ist auf der " + 6 +
         " gelandet.\n\nWähle die Figur aus mit der du laufen möchtest\n\n" + gameAsText))
     } else {

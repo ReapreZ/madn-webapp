@@ -21,7 +21,7 @@ body.main-body
     align-items: center;
     min-height: 70vh;
     
-    background: #acacac;
+    background: #d4d4d4;
 }
 .topnav {
     position: absolute;
@@ -35,7 +35,7 @@ nav.navPosition
     position: relative;
     width: 625px;
     height: 50px;
-    background: #222;
+    background: #000000;
     border-radius: 8px;
     display: flex;
     justify-content: center;

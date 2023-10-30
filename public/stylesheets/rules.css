@@ -10,6 +10,7 @@ h1.rules-header{
 p.rules-text{
     font-family: 'Poppins';
     background-color: #f2f2f2;
+    font-weight: 600;
     width: 1000px;
     border: 5px solid rgb(0, 0, 0);
     padding: 50px;
