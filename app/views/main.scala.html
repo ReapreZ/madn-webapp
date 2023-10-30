@@ -5,7 +5,9 @@
     <title>@title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/main.css")">
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="@routes.Assets.versioned("javascripts/main.js")"></script>
+
 </head>
 <body class="main-body">
 
@@ -13,13 +15,14 @@
     <br>
     <br>
     <nav class="navPosition">
-        <a class="index-link" @if(currentPath == "/") {class="active"} href="@routes.HomeController.index()">Home</a>
-        <a class="index-link" @if(currentPath == "/rules") {class="active"}href="@routes.HomeController.rules">Rules</a>
-        <a class="index-link" @if(currentPath == "/game") {class="active"} href="@routes.HomeController.game">Game</a>
-        <a class="index-link" @if(currentPath == "/feedback") {class="active"}href="@routes.HomeController.feedback">Feedback</a>
-        <a class="index-link" @if(currentPath == "/about") {class="active"} href="@routes.HomeController.about()">About</a>
-        <span class="index-span"></span>
+        <a class="index-link @if(currentPath == "/") {active}" href="@routes.HomeController.index()">Home</a>
+        <a class="index-link @if(currentPath == "/rules") {active}" href="@routes.HomeController.rules">Rules</a>
+        <a class="index-link @if(currentPath == "/game") {active}" href="@routes.HomeController.game">Game</a>
+        <a class="index-link @if(currentPath == "/feedback") {active}" href="@routes.HomeController.feedback">Feedback</a>
+        <a class="index-link @if(currentPath == "/about") {active}" href="@routes.HomeController.about()">About</a>
+        <span id="index-span" class="index-span"></span>
     </nav>
+    
 </div>
 
 <section class="content">@content</section>

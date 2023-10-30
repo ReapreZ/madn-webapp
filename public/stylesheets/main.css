@@ -21,7 +21,7 @@ body.main-body
     align-items: center;
     min-height: 70vh;
     
-    background: #ffffff;
+    background: #acacac;
 }
 .topnav {
     position: absolute;
@@ -91,3 +91,4 @@ nav a.index-link:nth-child(5):hover~span
     left: 535px;
     width: 90px;
 }
+
