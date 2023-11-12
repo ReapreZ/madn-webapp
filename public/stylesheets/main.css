@@ -7,13 +7,6 @@
     font-family: 'Poppins',sans-serif;
 }
 
-div.topnav {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
 body.main-body
 {
     display: flex;
@@ -23,73 +16,6 @@ body.main-body
     
     background: #d4d4d4;
 }
-.topnav {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-}
-nav.navPosition
-{
-    position: relative;
-    width: 625px;
-    height: 50px;
-    background: #000000;
-    border-radius: 8px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-nav a.index-link
-{
-    position: relative;
-    display: inline-block;
-    font-size: 1.5em;
-    font-weight: 500;
-    color: #fff;
-    text-decoration: none;
-    padding: 0 26px;
-    z-index: 1;
-}
 
-nav span.index-span
-{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 90px;
-    height: 100%;
-    background: linear-gradient(45deg, #4f1919,#ff3333);
-    border-radius: 8px;
-    transition: .5s;
-}
-
-nav a.index-link:nth-child(1):hover~span
-{
-    left: 0;
-    width: 90px;
-}
-nav a.index-link:nth-child(2):hover~span
-{
-    left: 115px;
-    width: 90px;
-}
-nav a.index-link:nth-child(3):hover~span
-{
-    left: 240px;
-    width: 90px;
-    
-}
-nav a.index-link:nth-child(4):hover~span
-{
-    left: 370px;
-    width: 130px;
-}
-nav a.index-link:nth-child(5):hover~span
-{
-    left: 535px;
-    width: 90px;
-}
 
