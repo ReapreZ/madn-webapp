@@ -20,11 +20,13 @@ h1.game-header{
 .mesh{
   background-color: #f2f2f2;
   height: 400px;
-  width: 700px;
+  max-width: 100%;
   border: 5px solid rgb(0, 0, 0);
-  padding: 50px;
+  padding: 20px;
   margin: 10px;
   border-radius: 5px;
+  text-align: justify;
+  font-size: 25px;
 }
 
 .button-container-dice{
@@ -33,8 +35,8 @@ h1.game-header{
     justify-content: center;
     align-items: center;
     min-height: 10vh;
-    flex-direction: row;
-    gap: 50px;
+    flex-direction: column;
+    gap: 20px;
 }
 a.game-link-dice{
     position: relative;
@@ -79,24 +81,16 @@ a.game-link-piece:hover{
     box-shadow: 0 0 35px var(--clr);
 }
 
+@media screen and (max-width: 768px) {
+  .mesh {
+      padding: 10px;
+      font-size: 16px;
+      height: 250px;
+  }
 
-
-
-
-
-
-/*
-
-.button-container {
-    display: flex;
-}
-
-.button-container button {
-    
-    margin-right: 50px;
-    width: 125px;
-    height: 40px;
-}
-.button-container button:first-child {
-    margin-left: 50px; 
-}*/
+  .button-container-dice,
+    .button-container-piece {
+        flex-direction: column;
+        gap: 15px;
+    }
+  }
