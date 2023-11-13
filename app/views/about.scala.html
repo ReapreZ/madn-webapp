@@ -1,35 +1,69 @@
 @main(title = "About", currentPath = "/about") {
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/about.css")">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-</head>
-<body>
-    <div class="container">
-        <form action="about">
-        <h1 class="about-header text-center">About Us</h1>
-        <div class="row align-items-center">
-            <div class="col-md-6">
-                <p class="about">
-                    This is a project made by Ümit Simsek and Can Kabak. <br>
-                    This was made for a lecture at the HTWG-Konstanz.
-                </p>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" charset="UTF-8">
+        <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/about.css")">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <!--<div class="container">
+            <form action="about">
+            <h1 class="about-header text-center">About Us</h1>
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="about">
+                        This is a project made by Ümit Simsek and Can Kabak. <br>
+                        This was made for a lecture at the HTWG-Konstanz.
+                    </p>
+                </div>
+    
+                <div class="col-md-6 text-center">
+                    <p class="github-logo">
+                        <i class="fa fa-github" style="font-size:96px; color:red"></i>
+                    </p>
+                    <a class="about-us" href="https://github.com/ReapreZ/madn-webapp">Link to the github</a>
+                </div>
             </div>
-
-            <div class="col-md-6 text-center">
-                <p class="github-logo">
-                    <i class="fa fa-github" style="font-size:96px; color:red"></i>
-                </p>
-                <a class="about-us" href="https://github.com/ReapreZ/madn-webapp">Link to the github</a>
+            <form>
+            </div>-->
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <br><br><br><br><br>
+    
+            <p>
+                <button class="btn btn-light" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+                    <h1 class="about-header text-center">About Us</h1>
+                </button>
+            </p>
+            <div style="min-height: 120px;">
+                <div class="collapse collapse-horizontal" id="collapseWidthExample">
+                    <div class="card card-body">
+                        
+                            
+                                <p class="about">
+                                    This is a project made by Ümit Simsek and Can Kabak. <br>
+                                    This was made for the lecture Web-Applications at the HTWG-Konstanz.
+                                </p>
+                            
+    
+                            
+                                <p class="github-logo">
+                                    <i class="fa fa-github" style="font-size:96px; color:red"></i>
+                                </p>
+                                <a class="about-us" href="https://github.com/ReapreZ/madn-webapp">Link to the github</a>
+                            
+                        
+                    </div>
+                </div>
             </div>
-        </div>
-        <form>
-
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-</body>
-}
+                </div>
+            </div>
+            
+        </body>
+    </html>
+    }
+    
