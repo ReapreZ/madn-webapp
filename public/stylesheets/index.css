@@ -17,7 +17,7 @@ body.index-body
 h1.welcome {
     font-family: 'Poppins', sans-serif;
     position: relative;
-    font-size: 9vw; /* Die Schriftgröße wird relativ zur Bildschirmbreite angepasst */
+    font-size: 5vw;
     color: white;
     -webkit-text-stroke: 0.2vw grey;
     text-transform: uppercase;
@@ -41,7 +41,7 @@ h1.welcome::before {
 
 @media (max-width: 768px) {
     h1.welcome {
-        font-size: vw; 
+        font-size: 9vw; 
         -webkit-text-stroke: 0.1vw grey; 
     }
 
