@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght&700&display=swap');
 *
-
+img {
+    max-width: 100%;
+    height: auto;
+}
 body.index-body
 {
     display:flex;
@@ -11,23 +14,22 @@ body.index-body
     padding-top: 10px;
     text-align: justify;
 }
-h1.welcome{
+h1.welcome {
     font-family: 'Poppins', sans-serif;
     position: relative;
-    font-size: 5vw;
+    font-size: 9vw; /* Die Schriftgröße wird relativ zur Bildschirmbreite angepasst */
     color: white;
     -webkit-text-stroke: 0.2vw grey;
     text-transform: uppercase;
     text-align: justify;
-    }
-    h1.welcome::before
-    {
-    white-space : nowrap;
+}
+
+h1.welcome::before {
+    white-space: nowrap;
     content: attr(data-text);
     position: absolute;
     top: 0;
     left: 0;
-    
     height: 100%;
     text-align: justify;
     color: rgb(255, 0, 0);
@@ -35,7 +37,18 @@ h1.welcome{
     border-right: 2px solid rgb(0, 0, 0);
     overflow: hidden;
     animation: animate 6s linear infinite;
+}
+
+@media (max-width: 768px) {
+    h1.welcome {
+        font-size: vw; 
+        -webkit-text-stroke: 0.1vw grey; 
     }
+
+    h1.welcome::before {
+        border-right: 1px solid rgb(0, 0, 0); 
+    }
+}
     @keyframes animate
     {
         0%,10%,100%
