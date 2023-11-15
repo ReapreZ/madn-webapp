@@ -30,7 +30,7 @@ cameraWuerfel.lookAt(sceneWuerfel.position);
 
 
 rendererWuerfel.setSize(400, 300);
-document.getElementById('wuerfel').appendChild( rendererWuerfel.domElement );
+document.getElementById('dice').appendChild( rendererWuerfel.domElement );
 
 sceneWuerfel.add(ambientLight);
 
@@ -43,7 +43,7 @@ sceneWuerfel.add(cameraWuerfel);
 // controlsWuerfel.damping = 0.2;
 // controlsWuerfel.addEventListener( 'change', renderWuerfel );
 
-var imagePrefix = "img/";
+var imagePrefix = "/assets/images/";
 var directions  = ["eins", "sechs", "drei", "vier", "fuenf", "zwei"];
 var imageSuffix = ".png";
 

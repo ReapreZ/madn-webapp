@@ -438,10 +438,10 @@ function onMouseMove (event) {
     raycaster.setFromCamera (mouse, camera);
     // calculate objects intersecting the picking ray
     var intersects = raycaster.intersectObjects (spielfiguren.children, true);
+    hover = spielerArr[spielernummer].start;
     if (intersects.length) {
       if (spielernummer === intersects[0].object.parent.spielernummer) {
         if (typeof intersects[0].object.parent.aktuellePos === 'undefined' && wuerfelZahl === 6) {
-          hover = spielerArr[spielernummer].start;
           spielfelder[hover].material.color.setHex (0xFF4C4C);
         } else {
           if (pruefeWeg (intersects[0].object.parent) && intersects[0].object.parent.aktuellePos < 1000) {

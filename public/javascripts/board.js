@@ -125,7 +125,7 @@ renderer.shadowMapType = THREE.PCFShadowMap;
 
 
 renderer.setSize($(window).width()-3, $(window).height()-5);
-document.getElementById('spielfeld').appendChild(renderer.domElement );
+document.getElementById('board').appendChild(renderer.domElement );
 
 // Licht von der Seite für Schattenerzeugung
 directionalLight.position.set(80, 0, 100);

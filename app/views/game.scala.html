@@ -1,13 +1,14 @@
 @(mesh: String)
 
 @main(title = "Game", currentPath = "/game") {
+
     <!DOCTYPE html>
     <html>
       <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         <title>Mensch ärgere Dich nicht - Grafische Datenverarbeitung</title>
-        <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/style.css")">
+        <link rel="stylesheet" type="text/css" href="@routes.Assets.versioned("stylesheets/style.css")">
       </head>
       <body>
         <div class="modal fade" id="menu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
@@ -46,7 +47,7 @@
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-body">
-                <div id="wuerfel"></div>
+                <div id="dice"></div>
                   <div class="ergebnis"></div>   
               </div>
             </div>
@@ -70,7 +71,7 @@
         </div>
     
     
-        <div id="spielfeld"></div>
+        <div id="board"></div>
     
     
     
@@ -84,9 +85,9 @@
       <script src="@routes.Assets.versioned("javascripts/OrbitControls.js")"></script>
       <script src="@routes.Assets.versioned("javascripts/tween.min.js")"></script>
     
-      <script src="@routes.Assets.versioned("javascripts/dice.js")"></script>
-      <script src="@routes.Assets.versioned("javascripts/board.js")"></script>
-      <script src="@routes.Assets.versioned("javascripts/controlls.js")"></script>
-      <script src="@routes.Assets.versioned("javascripts/menu.js")"></script>
+      <script type="text/javascript" src="@routes.Assets.versioned("javascripts/dice.js")"></script>
+      <script type="text/javascript" src="@routes.Assets.versioned("javascripts/board.js")"></script>
+      <script type="text/javascript" src="@routes.Assets.versioned("javascripts/controlls.js")"></script>
+      <script type="text/javascript" src="@routes.Assets.versioned("javascripts/menu.js")"></script>
     </html>
 }
