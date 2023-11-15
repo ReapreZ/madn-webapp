@@ -2,85 +2,91 @@
 
 @main(title = "Game", currentPath = "/game") {
 <htlm>
-    <head>
-        <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/game.css")">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    </head>
-
-    <body>
-        <br><br><br>
-        <h1 class="game-header">Game</h1>
-    <div class="mesh">
-        <pre>@mesh</pre>
-    </div>
-
-    <body class="game-body">
-        <br><br>
-        <div class="button-container-dice">
-            <a class="btn btn-danger game-link-dice" style="--clr:#ff3333" href="@routes.HomeController.roll" role="button">Roll Dice</a>
-            <a class="btn btn-danger game-link-dice" style="--clr:#ff3333" href="@routes.HomeController.moveMagic" role="button">Roll Magic Dice</a>
-        </div>
-        <br>
-        <div class="button-container-piece">
-            <a class="btn btn-danger game-link-piece" style="--clr:#ff3333" href="@routes.HomeController.setPieceToMove(1)" role="button">1</a>
-            <a class="btn btn-danger game-link-piece" style="--clr:#ff3333" href="@routes.HomeController.setPieceToMove(2)" role="button">2</a>
-            <a class="btn btn-danger game-link-piece" style="--clr:#ff3333" href="@routes.HomeController.setPieceToMove(3)" role="button">3</a>
-            <a class="btn btn-danger game-link-piece" style="--clr:#ff3333" href="@routes.HomeController.setPieceToMove(4)" role="button">4</a>
-        </div>
-    </body>
-
-<!--
-    <body class="game-body">
-        <br><br>
-        <div class="button-container-dice">
-            <a class="game-link-dice" style="--clr:#ff3333" href="@routes.HomeController.roll"><span>Roll Dice</span></a>
-            <a class="game-link-dice" style="--clr:#ff3333" href="@routes.HomeController.moveMagic"><span>Roll Magic Dice</span></a>
-        </div>
-        <div class="button-container-piece">
-            <a class="game-link-piece" style="--clr:#ff3333" href="@routes.HomeController.setPieceToMove(1)" method="GET"><span>1</span></span></a>
-            <a class="game-link-piece" style="--clr:#ff3333" href="@routes.HomeController.setPieceToMove(2)" method="GET"><span>2</span></span></a>
-            <a class="game-link-piece" style="--clr:#ff3333" href="@routes.HomeController.setPieceToMove(3)" method="GET"><span>3</span></span></a>
-            <a class="game-link-piece" style="--clr:#ff3333" href="@routes.HomeController.setPieceToMove(4)" method="GET"><span>4</span></span></a>
-        </div>
-
-    </body>-->
-</body>
-    
-
-
-
-
-    
-        <!--<br><br><br>
-        <div class="button-container">
-            <form action="@routes.HomeController.roll" method="GET">
-                <button type="submit">Roll</button>
-            </form>
-            <form action="@routes.HomeController.moveMagic" method="GET">
-                <button type="submit">Magic Dice</button>
-            </form>
-        </div>
-        <br>
-        <p>Pieces to move:</p>
-        <br>
-        <div>
-            <div class="button-container">
-                <form action="@routes.HomeController.setPieceToMove(1)" method="GET">
-                    <button type="submit">1</button>
-                </form>
-                <form action="@routes.HomeController.setPieceToMove(2)" method="GET">
-                    <button type="submit">2</button>
-                </form>
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="utf-8" /> 
+        <title>Mensch ärgere Dich nicht - Grafische Datenverarbeitung</title>
+        <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/style.css")">
+      </head>
+      <body>
+        <div class="modal fade" id="menu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Mensch ärgere Dich nicht</h4>
+              </div>
+              <div class="modal-body">
+                <div class="anzahl_spieler">
+                  <span>Anzahl der Spieler</span>
+                  <select id="spieleranzahl">
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                  </select>
+                </div>
+                <div class="spieler_farben">
+                  <div class="spieler_1"><input type="text" placeholder="Name des Spielers" id="spieler1"> <span data-color="rot" class="rot"></span><span data-color="blau" class="blau"></span><span data-color="gelb" class="gelb"></span><span data-color="gruen" class="gruen"></span></div>
+                  <div class="spieler_2"><input type="text" placeholder="Name des Spielers" id="spieler2"> <span data-color="rot" class="rot"></span><span data-color="blau" class="blau"></span><span data-color="gelb" class="gelb"></span><span data-color="gruen" class="gruen"></span></div>
+                  <div class="spieler_3"><input type="text" placeholder="Name des Spielers" id="spieler3"> <span data-color="rot" class="rot"></span><span data-color="blau" class="blau"></span><span data-color="gelb" class="gelb"></span><span data-color="gruen" class="gruen"></span></div>
+                  <div class="spieler_4"><input type="text" placeholder="Name des Spielers" id="spieler4"> <span data-color="rot" class="rot"></span><span data-color="blau" class="blau"></span><span data-color="gelb" class="gelb"></span><span data-color="gruen" class="gruen"></span></div>
+                </div>
+              </div>
+              <div class="modal-footer">
+              <span class="error">Jeder Spieler muss eine Farbe wählen.</span>
+                <button type="button" class="btn btn-primary" id="menue_speichern">Neues Spiel starten</button>
+              </div>
             </div>
-            <br>
-            <div>
-                <div class="button-container">
-                    <form action="@routes.HomeController.setPieceToMove(3)" method="GET">
-                        <button type="submit">3</button>
-                    </form>
-                    <form action="@routes.HomeController.setPieceToMove(4)" method="GET">
-                        <button type="submit">4</button>
-                    </form>
-        </div>-->
-</htlm>
+          </div>
+        </div>
+    
+    
+        <div class="modal fade" id="modal_wuerfeln" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-keyboard="false" data-backdrop="static">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body">
+                <div id="wuerfel"></div>
+                  <div class="ergebnis"></div>   
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        <div class="header">
+          <div class="wuerfeln">
+            <button class="button wuerfeln">Würfeln</button>
+          </div>
+    
+          <div id="ausgabe">
+            <div class="content">
+              Mensch ärgere dich nicht
+            </div>
+          </div>
+    
+          <div class="pause">
+            <button class="button pause" >Menü</button>
+          </div>
+        </div>
+    
+    
+        <div id="spielfeld"></div>
+    
+    
+    
+    
+    
+      </body>
+      <script src="@routes.Assets.versioned("javascripts/three.min.js")"></script>
+      <script src="@routes.Assets.versioned("javascripts/jquery.min.js")"></script>
+      <script src="@routes.Assets.versioned("bootstrap/transition.js")"></script>
+      <script src="@routes.Assets.versioned("bootstrap/modal.js")"></script>
+      <script src="@routes.Assets.versioned("javascripts/OrbitControls.js")"></script>
+      <script src="@routes.Assets.versioned("javascripts/tween.min.js")"></script>
+    
+      <script src="@routes.Assets.versioned("javascripts/dice.js")"></script>
+      <script src="@routes.Assets.versioned("javascripts/board.js")"></script>
+      <script src="@routes.Assets.versioned("javascripts/controlls.js")"></script>
+      <script src="@routes.Assets.versioned("javascripts/menu.js")"></script>
+    </html>
 }
