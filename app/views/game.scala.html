@@ -13,6 +13,48 @@
     </head>
     <body>
         <br><br><br>
+        <div id="player-popup" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closePopup()">&times;</span>
+                <h2>MADN Playerselection</h2>
+                <form id="player-form">
+                    <!-- Spielerinformationen und Farbauswahl für jeden Spieler -->
+                    <div class="player-info">
+                        <label for="player1" style="margin-right: 10px; margin-top:15px;">Player 1 :</label>
+                        <input type="text" id="player1" required>
+                        <div class="color-options">
+                            <div class="color-option yellow" onclick="selectColor('yellow', 'color1')"></div>
+                        </div>
+                    </div>
+                    <div class="player-info">
+                        <label for="player2" style="margin-right: 10px; margin-top:15px;">Player 2 :</label>
+                        <input type="text" id="player2" required>
+                        <div class="color-options">
+                            <div class="color-option green" onclick="selectColor('green', 'color1')"></div>
+                        </div>
+                    </div>
+                    <div class="player-info">
+                        <label for="player3" style="margin-right: 10px; margin-top:15px;">Player 3 :</label>
+                        <input type="text" id="player3" required>
+                        <div class="color-options">
+                            <div class="color-option blue" onclick="selectColor('blue', 'color1')"></div>
+                        </div>
+                    </div>
+                    <div class="player-info">
+                        <label for="player4" style="margin-right: 10px; margin-top:15px;">Player 4 :</label>
+                        <input type="text" id="player4" required>
+                        <div class="color-options">
+                            <div class="color-option red" onclick="selectColor('red', 'color1')"></div>
+                        </div>
+                    </div>
+                
+        
+                    <button type="button" id="startButton" onclick="startGame()">Spiel starten</button>
+                </form>
+            </div>
+        </div>
+        
+
         <div id="game-board"></div>
     </body>
     </html>
