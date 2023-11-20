@@ -1,9 +1,55 @@
 document.addEventListener('DOMContentLoaded', function () {
     const gameBoard = document.getElementById('game-board');
+    const startButton = document.getElementById('startButton');
+    if (startButton) {
+        startButton.addEventListener('click', function () {
+            // Hier wird die Funktion startGame() aufgerufen, wenn der Button geklickt wird
+            startGame();
+        });
+    }
+    openPopup();
+    function openPopup() {
+        const popup = document.getElementById('player-popup');
+        popup.style.display = 'block';
+    }
+    
+    
+    function closePopup() {
+        const popup = document.getElementById('player-popup');
+        popup.style.display = 'none';
+    }
+    
+    
+    function startGame() {
+        // Hier können Sie die Informationen aus dem Formular abrufen und verwenden
+        player1Name = document.getElementById('player1').value;
+        player2Name = document.getElementById('player2').value;
+        player3Name = document.getElementById('player3').value;
+        player4Name = document.getElementById('player4').value;
+        
+        playeramount = filledPlayer();
+
+        initializeGame();
+    
+    
+        console.log('Spieler 1:', player1Name);
+        console.log('Spieler 2:', player2Name);
+        console.log('Spieler 3:', player3Name);
+        console.log('Spieler 4:', player4Name);
+    
+    
+        closePopup();
+    }
+    
+    var player1Name;
+    var player2Name;
+    var player3Name;
+    var player4Name;
 
     const fieldList = [
         [0, 4],[1, 4],[2, 4],[3, 4],[4, 4],[4, 3],[4, 2],[4, 1],[4, 0],[5, 0],[6, 0],[6, 1],[6, 2],[6, 3],[6, 4],[7, 4],[8, 4],[9, 4],[10, 4],[10, 5],[10, 6],[9, 6],[8, 6],[7, 6],[6, 6],[6, 7],[6, 8],[6, 9],[6, 10],[5, 10],[4, 10],[4, 9],[4, 8],[4, 7],[4, 6],[3, 6],[2, 6],[1, 6],[0, 6],[0, 5],
       ];
+      //houseList für 4 Spieler
     const houseList = [
         [0 ,0],[1 ,0],[0 ,1],[1 ,1], [9 ,0],[10 ,0],[9 ,1],[10 ,1], [0 ,9],[1 ,9],[0 ,10],[1 ,10], [9 ,9],[10 ,9],[9 ,10],[10 ,10],
     ];
@@ -20,11 +66,40 @@ document.addEventListener('DOMContentLoaded', function () {
     var piecesOut = [0, 0, 0, 0];
     var playerturn = 0;
     var rolledDice = 1;
+    var playeramount = 3;
+
+    function adjustGameBoard(playeramount){
+        if(playeramount < 2 || playeramount > 4){
+            console.error("Ungültige Spieleranzahl. Die Spieleranzahl muss zwischen 2 und 4 Spielern liegen.")
+        }
+        const fieldsToDelete = (4 - playeramount) * 4;
+        houseList.splice(-fieldsToDelete, fieldsToDelete);
+    }
+
+    function filledPlayer(){
+        filledPlayer = 0;
+
+        if(player1Name.trim() !== ''){
+            filledPlayer++;
+        }
+        if(player2Name.trim() !== ''){
+            filledPlayer++;
+        }
+        if(player3Name.trim() !== ''){
+            filledPlayer++;
+        }
+        if(player4Name.trim() !== ''){
+            filledPlayer++;
+        }
+        return filledPlayer;
+    }
 
     function initializeGame() {
         createGameBoard();
         const gameInterface = createGameInterface();
         gameBoard.parentElement.appendChild(gameInterface);
+
+        adjustGameBoard(playeramount);
 
         addStartPlayerCircles(houseList);
     }
@@ -147,7 +222,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function updatePlayerturn() {
-        if(playerturn === 3) {
+        if(playerturn === playeramount-1) {
             playerturn = 0;
         } else {
             playerturn = playerturn + 1;
@@ -391,5 +466,12 @@ document.addEventListener('DOMContentLoaded', function () {
         return interfaceContainer;
     }
 
-    initializeGame();
+    
+
 });
+
+
+
+
+
+

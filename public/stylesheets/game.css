@@ -85,3 +85,99 @@
     height: 100px;
 }
 
+/* In game.css */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 50%;
+    
+}
+
+
+label, input, select {
+    margin-bottom: 15px;
+}
+
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#player-form {
+    text-align: center;
+}
+.player-info {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    
+}
+
+.color-options {
+    display: flex;
+    margin-right: 10px; /* Abstand zwischen dem Textfeld und den Farboptionen */
+}
+
+
+.color-option {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.color-option.yellow {
+    background-color: yellow;
+}
+
+.color-option.green {
+    background-color: green;
+}
+
+.color-option.blue {
+    background-color: blue;
+}
+
+.color-option.red {
+    background-color: red;
+}
+
+.color-option:hover {
+    border: 2px solid #000;
+}
+
+#color1, #color2, #color3, #color4 {
+    display: none; /* Verstecke die Eingabefelder für die Farbauswahl */
+}
+
+/* Fügen Sie hier zusätzliches Styling für das Formular hinzu, wenn gewünscht */
