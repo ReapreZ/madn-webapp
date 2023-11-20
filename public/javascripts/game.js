@@ -66,8 +66,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var piecesOut = [0, 0, 0, 0];
     var playerturn = 0;
     var rolledDice = 1;
-    var playeramount = 3;
-
+    var playeramount = 0;
+    var timesPlayerRolled = 0;
     function adjustGameBoard(playeramount){
         if(playeramount < 2 || playeramount > 4){
             console.error("Ungültige Spieleranzahl. Die Spieleranzahl muss zwischen 2 und 4 Spielern liegen.")
@@ -93,6 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         return filledPlayer;
     }
+    var timesPlayerRolled = 0;
 
     function initializeGame() {
         createGameBoard();
@@ -126,7 +127,6 @@ document.addEventListener('DOMContentLoaded', function () {
         cell.setAttribute('data-column', column);
 
         cell.addEventListener('click', function () {
-            //addPlayerCircle(cell, playerColors[playerturn]);
             if(!cell.classList.contains('empty')) {
                 isMovingPieceOutAllowed(cell);
                 movePiece(cell);
@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const cellCoordinates = getCoordinatesFromCell(cell);
         const cellX = cellCoordinates[0];
         const cellY = cellCoordinates[1];
-        updateCoordinateInList(cellX, cellY, startingTileX, startingTileY);
+        updateCoordinateInList(pieceList, cellX, cellY, startingTileX, startingTileY);
     }
 
     function movePiece(cell) {
@@ -246,7 +246,27 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function isOnePieceOut() {
+        playerIdx = playerturn * 4;
+        for (let i = playerIdx; i < playerIdx + 4; i++) {
+            piecePosX = pieceList[i][0];
+            piecePosY = pieceList[i][1];
+            housePosX = houseList[i][0];
+            housePosY = houseList[i][1];
+            //console.log(piecePosX + "   " + housePosX + "   " + piecePosY + "   " + housePosY);
+            if(!(piecePosX === housePosX && piecePosY === housePosY)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
+    function changeTextFieldText(newText) {
+        const textField = document.querySelector('.informationBoard');
+        if (textField) {
+            textField.textContent = newText;
+        } else {
+            console.error('Text field not found.');
+        }
     }
 
     function createDice() {
@@ -283,6 +303,41 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function rollMagicDice() {
         rolledDice = 6;
+        timesPlayerRolled = 0;
+        changeTextFieldText("Player " + (playerturn + 1) + " rolled a 6. It's your turn again!");
+    }
+
+
+    function kickOtherPieceOut(cell) {
+        
+        //check if x and y is already occupied
+        if(!(cell.querySelector('.player-circle') !== null)) {
+            const color = getColorAtCell(cell);
+            //if so check if it is an other color then self
+            if(color != playerColors[playerturn]) {
+                findEmptyHouseSlot();
+            } else {
+                //donothing
+            }
+        }
+        //if it is a different color. find an empty house by giving the playerturn of the color as a parameter
+        //move the piece back to their house
+    }
+
+    function findEmptyHouseSlot(kickedOutPlayer) {
+        playerIdx = kickedOutPlayer * 4;
+        for (let i = playerIdx; i < playerIdx + 4; i++) {
+            piecePosX = pieceList[i][0];
+            piecePosY = pieceList[i][1];
+            housePosX = houseList[i][0];
+            housePosY = houseList[i][1];
+            //console.log(piecePosX + "   " + housePosX + "   " + piecePosY + "   " + housePosY);
+            if(!(piecePosX === housePosX && piecePosY === housePosY)) {
+                return [housePosX, housePosY];
+            }
+        }
+        console.error("No free house found");
+        return null;
     }
 
     function rollDice() {
@@ -318,15 +373,36 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.error('Invalid random number.');
                 break;
             }
+            if(rolledDice === 6 && isOnePieceOut()) {
+                timesPlayerRolled = 0;
+                changeTextFieldText("Player " + (playerturn + 1) + " rolled a " + rolledDice + ". Choose a Piece to get out or move a Piece on the board. It's your turn again!");
+                return;
+            } else if(rolledDice === 6) {
+                timesPlayerRolled = 0;
+                changeTextFieldText("Player " + (playerturn + 1) + " rolled a " + rolledDice + ". Choose a Piece to get out. It's your turn again!");
+                return;
+            } else if(isOnePieceOut()) {
+                console.log(" tesssa");
+                timesPlayerRolled = 0;
+                changeTextFieldText("Player " + (playerturn + 1) + " rolled a " + rolledDice + ". Choose the Piece to move. It's Player " + getNextPlayerturn() + "'s turn next!");
+                //updatePlayerturn();
+            } else if(timesPlayerRolled != 2) {
+                timesPlayerRolled = timesPlayerRolled + 1;
+                changeTextFieldText("Player " + (playerturn + 1) + " rolled a " + rolledDice + ". It's your turn again!");
+            } else {
+                timesPlayerRolled = 0;
+                changeTextFieldText("Player " + (playerturn + 1) + " rolled a " + rolledDice + ". It's Player " + getNextPlayerturn() + "'s turn!");
+                updatePlayerturn();
+            }
     }
-    /*function changeCellColor(cell, newColor) {
-        if (cell && cell.style) {
-            cell.style.backgroundColor = newColor;
-            console.log("ttttttessst")
+
+    function getNextPlayerturn() {
+        if(playerturn === 3) {
+            return "1";
         } else {
-            console.error('Ungültige Zelle oder Zellenstil.');
+            return (playerturn + 2);
         }
-    }*/
+    }
     function createRow(rowData, rowIndex) {
         const row = document.createElement('div');
         row.className = 'game-row';
@@ -460,18 +536,17 @@ document.addEventListener('DOMContentLoaded', function () {
         const dice = createDice();
         const magicDice = createMagicDice();
 
+        const textContainer = document.createElement('div');
+        textContainer.className = 'text-container';
+        const textField = document.createElement('div');
+        textField.className = 'informationBoard';
+        textField.textContent = 'Roll the dice to begin playing';
+        textContainer.append(textField);
+
         interfaceContainer.appendChild(dice);
         interfaceContainer.appendChild(magicDice);
+        interfaceContainer.appendChild(textContainer);
 
         return interfaceContainer;
     }
-
-    
-
 });
-
-
-
-
-
-

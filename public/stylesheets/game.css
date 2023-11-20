@@ -79,13 +79,11 @@
 }
 
 .dice-image {
-    margin-right: 30px;
-    margin-top: 20px;
+    margin-right: 20px;
+    margin-top: 7px;
     width: 100px;
     height: 100px;
 }
-
-/* In game.css */
 
 .modal {
     display: none;
@@ -111,11 +109,9 @@
     
 }
 
-
 label, input, select {
     margin-bottom: 15px;
 }
-
 
 .close {
     color: #aaa;
@@ -146,7 +142,6 @@ label, input, select {
     display: flex;
     margin-right: 10px; /* Abstand zwischen dem Textfeld und den Farboptionen */
 }
-
 
 .color-option {
     width: 30px;
@@ -180,4 +175,17 @@ label, input, select {
     display: none; /* Verstecke die Eingabefelder für die Farbauswahl */
 }
 
-/* Fügen Sie hier zusätzliches Styling für das Formular hinzu, wenn gewünscht */
+.informationBoard {
+    padding-left: 5px;
+    padding-top: 5px;
+    width: 220px;
+    height: 30px;
+    font-size: 16px;
+    color: #fafafa;
+}
+
+.text-container {
+    margin-top: 7px;
+    background-color: #3a503b;
+    display: inline-block;
+}
