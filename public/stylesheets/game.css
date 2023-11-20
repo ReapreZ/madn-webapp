@@ -79,9 +79,24 @@
 }
 
 .dice-image {
-    margin-right: 30px;
-    margin-top: 20px;
+    margin-right: 20px;
+    margin-top: 7px;
     width: 100px;
     height: 100px;
+}
+
+.informationBoard {
+    padding-left: 5px;
+    padding-top: 5px;
+    width: 220px;
+    height: 30px;
+    font-size: 16px;
+    color: #fafafa;
+}
+
+.text-container {
+    margin-top: 7px;
+    background-color: #3a503b;
+    display: inline-block;
 }
 
