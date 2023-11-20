@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function () {
             piecePosY = pieceList[i][1];
             housePosX = houseList[i][0];
             housePosY = houseList[i][1];
-            console.log(piecePosX + "   " + housePosX + "   " + piecePosY + "   " + housePosY);
+            //console.log(piecePosX + "   " + housePosX + "   " + piecePosY + "   " + housePosY);
             if(!(piecePosX === housePosX && piecePosY === housePosY)) {
                 return true;
             }
@@ -233,12 +233,20 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    function kickOtherPieceOut(x, y) {
+    function kickOtherPieceOut(cell) {
+        
         //check if x and y is already occupied
-        //if so check if it is an other color then self
+        if(!(cell.querySelector('.player-circle') !== null)) {
+            const color = getColorAtCell(cell);
+            //if so check if it is an other color then self
+            if(color != playerColors[playerturn]) {
+                findEmptyHouseSlot();
+            } else {
+                //donothing
+            }
+        }
         //if it is a different color. find an empty house by giving the playerturn of the color as a parameter
         //move the piece back to their house
-        //if it is the same color do nothing
     }
 
     function findEmptyHouseSlot(kickedOutPlayer) {
@@ -248,12 +256,13 @@ document.addEventListener('DOMContentLoaded', function () {
             piecePosY = pieceList[i][1];
             housePosX = houseList[i][0];
             housePosY = houseList[i][1];
-            console.log(piecePosX + "   " + housePosX + "   " + piecePosY + "   " + housePosY);
+            //console.log(piecePosX + "   " + housePosX + "   " + piecePosY + "   " + housePosY);
             if(!(piecePosX === housePosX && piecePosY === housePosY)) {
-                return true;
+                return [housePosX, housePosY];
             }
         }
-        return false;
+        console.error("No free house found");
+        return null;
     }
 
     function rollDice() {
