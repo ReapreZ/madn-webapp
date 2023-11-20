@@ -397,10 +397,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function getNextPlayerturn() {
-        if(playerturn === 3) {
+        if(playerturn === playeramount - 1) {
             return "1";
         } else {
+            if(playeramount === 1) {
+                return 1;
+            } else {
             return (playerturn + 2);
+            }
         }
     }
     function createRow(rowData, rowIndex) {
