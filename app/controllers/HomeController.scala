@@ -107,7 +107,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
 
 
   /*def getPlayerTurnJson = Action {
-    val playerTurnJson = controller.getPlayerTurnAsJson
+    val playerTurnJson = controller.getPlayerTurnAsJson()
     Ok(playerTurnJson)
   }*/
 
