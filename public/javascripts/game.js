@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var rolledDice = 1;
     var playeramount = 0;
     var timesPlayerRolled = 0;
+    const API_BASE_URL = "http://localhost:9000";
     function adjustGameBoard(playeramount){
         if(playeramount < 2 || playeramount > 4){
             console.error("Ungültige Spieleranzahl. Die Spieleranzahl muss zwischen 2 und 4 Spielern liegen.")
@@ -299,6 +300,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function rollMagicDice() {
+        setPlayerTurnFromBackend();
         rolledDice = 6;
         timesPlayerRolled = 0;
         changeTextFieldText("Player " + (playerturn + 1) + " rolled a 6. It's your turn again!");
@@ -487,6 +489,21 @@ document.addEventListener('DOMContentLoaded', function () {
         for (let i = 0; i < list.length; i++) {
             console.log(`Item ${i + 1}: [${list[i].join(', ')}]`);
         }
+    }
+
+    function setPlayerTurnFromBackend() {
+        $.ajax({
+            url: API_BASE_URL + '/getPlayerTurnJson',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                console.log(data.playerturn + ' <---------------------------------');
+                
+            },
+            error: function(error) {
+                console.error('Error:', error);
+            }
+        });
     }
 
     function createGameBoard() {
