@@ -492,7 +492,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function setPlayerTurnFromBackend() {
-        $.ajax({
+        /*$.ajax({
             url: API_BASE_URL + '/getPlayerTurnJson',
             type: 'GET',
             dataType: 'json',
@@ -503,7 +503,7 @@ document.addEventListener('DOMContentLoaded', function () {
             error: function(error) {
                 console.error('Error:', error);
             }
-        });
+        });*/
     }
 
     function createGameBoard() {

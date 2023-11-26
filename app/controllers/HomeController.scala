@@ -53,7 +53,7 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
   }
 
 
-  def roll() = Action {
+ /* def roll() = Action {
     val playerturn = controller.game.getPlayerturn
     playerturnAsChar = getPlayerturnAsChar(playerturn)
     rolledDice = dice.diceRandom(6)
@@ -95,21 +95,21 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     val playerturn = getPlayerturnAsChar(controller.game.playerturn)
     Ok(views.html.game(playerturn.toString))
   }
-
+*/
   def game() = Action {
     Ok(views.html.game(gameAsText))
   }
 
   private def gameAsText = {
-    playerturnAsChar + " hat gerade gewürfelt.\n\n" + controller.game.mesh.mesh()
+    playerturnAsChar + " hat gerade gewürfelt.\n\n" + controller.printPlayerTurn
   }
 
 
 
-  def getPlayerTurnJson = Action {
+  /*def getPlayerTurnJson = Action {
     val playerTurnJson = controller.getPlayerTurnAsJson
     Ok(playerTurnJson)
-  }
+  }*/
 
 
 
