@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const startButton = document.getElementById('startButton');
     if (startButton) {
         startButton.addEventListener('click', function () {
-            // Hier wird die Funktion startGame() aufgerufen, wenn der Button geklickt wird
             startGame();
         });
     }
@@ -21,7 +20,6 @@ document.addEventListener('DOMContentLoaded', function () {
     
     
     function startGame() {
-        // Hier können Sie die Informationen aus dem Formular abrufen und verwenden
         player1Name = document.getElementById('player1').value;
         player2Name = document.getElementById('player2').value;
         player3Name = document.getElementById('player3').value;
@@ -49,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const fieldList = [
         [0, 4],[1, 4],[2, 4],[3, 4],[4, 4],[4, 3],[4, 2],[4, 1],[4, 0],[5, 0],[6, 0],[6, 1],[6, 2],[6, 3],[6, 4],[7, 4],[8, 4],[9, 4],[10, 4],[10, 5],[10, 6],[9, 6],[8, 6],[7, 6],[6, 6],[6, 7],[6, 8],[6, 9],[6, 10],[5, 10],[4, 10],[4, 9],[4, 8],[4, 7],[4, 6],[3, 6],[2, 6],[1, 6],[0, 6],[0, 5],
       ];
-      //houseList für 4 Spieler
     const houseList = [
         [0 ,0],[1 ,0],[0 ,1],[1 ,1], [9 ,0],[10 ,0],[9 ,1],[10 ,1], [0 ,9],[1 ,9],[0 ,10],[1 ,10], [9 ,9],[10 ,9],[9 ,10],[10 ,10],
     ];
