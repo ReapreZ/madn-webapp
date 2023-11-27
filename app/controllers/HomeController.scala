@@ -2,14 +2,19 @@ package controllers
 
 import com.google.inject.Guice
 import de.htwg.madn.controller.ControllerInterface
+import de.htwg.madn.model.DataComponent.DataToJson
 import de.htwg.madn.model.diceComponent.diceBase.Dice
 import de.htwg.madn.start.MADNModule
 
+import play.api.libs.json._
+import play.api.libs.json.Reads._
+import play.api.libs.functional.syntax._
 import javax.inject._
 import play.api._
 import play.api.mvc._
-
+import play.api.http.{ContentTypeOf, ContentTypes, Writeable}
 import scala.util.{Failure, Success}
+import akka.util.ByteString
 
 /**
  * This controller creates an `Action` to handle HTTP requests to the
@@ -18,8 +23,9 @@ import scala.util.{Failure, Success}
 @Singleton
 class HomeController @Inject()(val controllerComponents: ControllerComponents) extends BaseController {
 
-  private val injector = Guice.createInjector(new MADNModule)
-  val controller = injector.getInstance(classOf[ControllerInterface])
+ /* private val injector = Guice.createInjector(new MADNModule)
+  val controller = injector.getInstance(classOf[ControllerInterface])*/
+  val data: DataToJson = new DataToJson
 
   val dice = new Dice
   var rolledDice = 1
@@ -52,65 +58,77 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     Ok(views.html.feedback())
   }
 
-
- /* def roll() = Action {
-    val playerturn = controller.game.getPlayerturn
-    playerturnAsChar = getPlayerturnAsChar(playerturn)
-    rolledDice = dice.diceRandom(6)
-    if((controller.game.piecesOutList(playerturn-1) >= 1 && rolledDice == 6) || controller.game.piecesOutList(playerturn-1) > 1) {
-      Ok(views.html.game("Der Würfel ist auf der " + rolledDice +
-        " gelandet.\n\nWähle die Figur aus mit der du laufen möchtest\n\n"  + gameAsText))
-    } else {
-      controller.doAndPublish(controller.move1((rolledDice)))
-      Ok(views.html.game("Der Würfel ist auf der " + rolledDice.toString + " gelandet.\n\n" + gameAsText))
-    }
-  }
-
-  def getPlayerturnAsChar(playerturn: Int): Char = {
-    controller.getTurnC1(playerturn) match {
-      case Success(v) => v
-      case Failure(e) => 'e'
-    }
-  }
-  def moveMagic() = Action {
-    rolledDice = 6
-    val playerturn = controller.game.getPlayerturn
-    playerturnAsChar = getPlayerturnAsChar(playerturn)
-    if (controller.game.piecesOutList(playerturn-1) >= 1) {
-      Ok(views.html.game("Der Würfel ist auf der " + 6 +
-        " gelandet.\n\nWähle die Figur aus mit der du laufen möchtest\n\n" + gameAsText))
-    } else {
-      controller.doAndPublish(controller.move1((6)))
-      Ok(views.html.game("Der Würfel ist auf der " + 6.toString + " gelandet.\n\n" + gameAsText))
-    }
-  }
-
-  def setPieceToMove(pieceToMove: Int) = Action {
-    controller.game.pieceChooser = pieceToMove;
-    controller.move1(rolledDice)
-    Ok(views.html.game(gameAsText))
-  }
-
-  def getPlayerturn() = Action {
-    val playerturn = getPlayerturnAsChar(controller.game.playerturn)
-    Ok(views.html.game(playerturn.toString))
-  }
-*/
   def game() = Action {
     Ok(views.html.game(gameAsText))
   }
 
   private def gameAsText = {
-    playerturnAsChar + " hat gerade gewürfelt.\n\n" + controller.printPlayerTurn
+    playerturnAsChar + " hat gerade gewürfelt.\n\n" + data.getPlayerTurnAsJson//controller.printPlayerTurn
   }
 
 
 
-  /*def getPlayerTurnJson = Action {
-    val playerTurnJson = controller.getPlayerTurnAsJson()
-    Ok(playerTurnJson)
-  }*/
 
+
+
+  def getPlayerTurn = Action {
+    val playerTurnJson = data.getPlayerTurnAsJson
+    Ok(playerTurnJson)
+  }
+
+  def getPiecesList = Action {
+    val piecesListJson = convertToJsonString(data.pieceList)
+    Ok(piecesListJson).as("application/json")
+  }
+
+  def getPiecesOut = Action {
+    val piecesOutJson = convertJsonToStringFromSimpleArray(data.getPiecesOutAsJson)
+    Ok(piecesOutJson)
+  }
+
+  def getTimesPlayerRolled = Action {
+    val timesPlayerRolledJson = data.getTimesPlayerRolledAsJson
+    Ok(timesPlayerRolledJson)
+  }
+
+  def getPlayerAmount = Action {
+    val playerAmountJson = data.getPlayerAmountAsJson
+    Ok(playerAmountJson)
+  }
+
+  def getRolledDice = Action {
+    val rolledDiceJson = data.getRolledDiceAsJson
+    Ok(rolledDiceJson)
+  }
+
+
+
+  def playerturnToJson(playerturn: Int): JsValue = {
+    return Json.toJson(playerturn)
+  }
+
+  def convertToJsonString(array: Array[Array[Int]]): String = {
+    Json.toJson(array).toString()
+  }
+
+  def convertToJsonStringFromSimpleArray(array: Array[Int]): String = {
+    Json.toJson(array).toString()
+  }
+
+  def convertJsonToStringFromSimpleArray(jsValue: JsValue): String = {
+    val array: Array[Int] = jsValue.as[Array[Int]]
+    Json.toJson(array).toString()
+  }
+
+  def setPlayerturn() = Action(parse.json) {
+    request =>
+      val playerturnJson = request.body
+      //data.playerturn = 
+      data.setPlayerTurnFromJson(playerturnJson)
+      Ok("Playerturn successfully set")
+  }
+
+  //request.body.validate[Array[Array[Int]]].map 
 
 
 

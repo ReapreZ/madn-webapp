@@ -14,6 +14,7 @@ libraryDependencies += ("com.typesafe.slick" %% "slick" % "3.5.0-M3")
 libraryDependencies += "com.typesafe.akka" %% "akka-http" % "10.2.10"
 libraryDependencies += "com.typesafe.akka" %% "akka-http-core" % "10.2.10"
 libraryDependencies += "com.typesafe.akka" %% "akka-parsing" % "10.2.10"
+libraryDependencies += ("com.typesafe.play" %% "play-json" % "2.10.0-RC5")
 
 // Adds additional packages into Twirl
 //TwirlKeys.templateImports += "de.htwg.controllers._"

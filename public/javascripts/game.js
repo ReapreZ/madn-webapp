@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const firstValue = element[0];
             const secondValue = element[1];
             const cell = findCellByRowAndColumn(firstValue, secondValue);
-
+            //const playerturn = getPlayerTurnFromBackend();
             if(i % 4 === 0 && i != 0) {
                 playerturn = playerturn + 1;
             }
@@ -300,7 +300,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function rollMagicDice() {
-        setPlayerTurnFromBackend();
+        getPlayerTurnFromBackend()
+        setPlayerTurnInBackend(2)
+        getPlayerTurnFromBackend()
+
         rolledDice = 6;
         timesPlayerRolled = 0;
         changeTextFieldText("Player " + (playerturn + 1) + " rolled a 6. It's your turn again!");
@@ -381,7 +384,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 changeTextFieldText("Player " + (playerturn + 1) + " rolled a " + rolledDice + ". Choose a Piece to get out. It's your turn again!");
                 return;
             } else if(isOnePieceOut()) {
-                console.log(" tesssa");
                 timesPlayerRolled = 0;
                 changeTextFieldText("Player " + (playerturn + 1) + " rolled a " + rolledDice + ". Choose the Piece to move. It's Player " + getNextPlayerturn() + "'s turn next!");
                 //updatePlayerturn();
@@ -491,21 +493,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    function setPlayerTurnFromBackend() {
-        /*$.ajax({
-            url: API_BASE_URL + '/getPlayerTurnJson',
-            type: 'GET',
-            dataType: 'json',
-            success: function(data) {
-                console.log(data.playerturn + ' <---------------------------------');
-                
-            },
-            error: function(error) {
-                console.error('Error:', error);
-            }
-        });*/
-    }
-
     function createGameBoard() {
         const rowsData = [
             [
@@ -546,6 +533,182 @@ document.addEventListener('DOMContentLoaded', function () {
             gameBoard.appendChild(createRow(rowData, rowIndex)); 
         });
     }
+
+    function getPlayerTurnFromBackend() {
+        $.ajax({
+            url: API_BASE_URL + '/getPlayerturn',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                //funkt noch nicht richtig
+                playerturn = data
+                console.log(data)
+            },
+            error: function(error) {
+                console.error('Error:', error);
+            }
+        });
+    }
+
+    function getRolledDiceFromBackend() {
+        $.ajax({
+            url: API_BASE_URL + '/getRolledDice',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                return data
+            },
+            error: function(error) {
+                console.error('Error:', error);
+            }
+        });
+    }
+
+    function getPlayerAmountFromBackend() {
+        $.ajax({
+            url: API_BASE_URL + '/getPlayerAmount',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                return data
+            },
+            error: function(error) {
+                console.error('Error:', error);
+            }
+        });
+    }
+
+    function getTimesPlayerRolledFromBackend() {
+        $.ajax({
+            url: API_BASE_URL + '/getTimesPlayerRolled',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                return data
+            },
+            error: function(error) {
+                console.error('Error:', error);
+            }
+        });
+    }
+
+    function getPiecesOutFromBackend() {
+        $.ajax({
+            url: API_BASE_URL + '/getPiecesOut',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                return data
+            },
+            error: function(error) {
+                console.error('Error:', error);
+            }
+        });
+    }
+
+    function getPiecesListFromBackend() {
+        $.ajax({
+            url: API_BASE_URL + '/getPiecesList',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                return data
+            },
+            error: function(error) {
+                console.error('Error:', error);
+            }
+        });
+    }
+
+
+    function setPlayerTurnInBackend(playerturnBackend) {
+
+        $.ajax({
+            type: "POST",
+            url:  API_BASE_URL + "/setPlayerturn",
+            dataType: 'json',
+            contentType: "application/json",
+            data: JSON.stringify({ number: playerturnBackend }),
+            processData: false,
+            success: function (response) {
+                console.log('Erfolgreich an das Backend gesendet:', response);
+            },
+            error: function (error) {
+                console.error('Fehler beim Senden an das Backend:', error);
+            }
+        })
+    }
+
+    function setRolledDiceInBackend() {
+        $.ajax({
+            url: API_BASE_URL + '/getRolledDice',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                return data
+            },
+            error: function(error) {
+                console.error('Error:', error);
+            }
+        });
+    }
+
+    function setPlayerAmountInBackend() {
+        $.ajax({
+            url: API_BASE_URL + '/getPlayerAmount',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                return data
+            },
+            error: function(error) {
+                console.error('Error:', error);
+            }
+        });
+    }
+
+    function setTimesPlayerRolledInBackend() {
+        $.ajax({
+            url: API_BASE_URL + '/getTimesPlayerRolled',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                return data
+            },
+            error: function(error) {
+                console.error('Error:', error);
+            }
+        });
+    }
+
+    function setPiecesOutInBackend() {
+        $.ajax({
+            url: API_BASE_URL + '/getPiecesOut',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                return data
+            },
+            error: function(error) {
+                console.error('Error:', error);
+            }
+        });
+    }
+
+    function setPiecesListInBackend() {
+        $.ajax({
+            url: API_BASE_URL + '/getPiecesList',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                return data
+            },
+            error: function(error) {
+                console.error('Error:', error);
+            }
+        });
+    }
+
 
     function createGameInterface() {
         const interfaceContainer = document.createElement('div');

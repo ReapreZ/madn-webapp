@@ -3,27 +3,21 @@
 # https://www.playframework.com/documentation/latest/ScalaRouting
 # ~~~~
 
- + NOCSRF
 # An example controller showing a sample home page
+ + NOCSRF
 GET     /                           controllers.HomeController.index()
-
-# GET     /moveMagic                  controllers.HomeController.moveMagic
-
-# GET     /playerturn                 controllers.HomeController.getPlayerturn
-
-# GET     /roll                       controllers.HomeController.roll
-
-# GET     /turn/:piece                controllers.HomeController.setPieceToMove(piece:Int)
-
 GET     /rules                     	controllers.HomeController.rules()
-
 GET     /feedback                   controllers.HomeController.feedback()
-
 GET     /about                      controllers.HomeController.about()
-
 GET     /game                       controllers.HomeController.game
+GET     /getPiecesList              controllers.HomeController.getPiecesList
+GET     /getPiecesOut               controllers.HomeController.getPiecesOut
+GET     /getTimesPlayerRolled       controllers.HomeController.getTimesPlayerRolled
+GET     /getPlayerAmount            controllers.HomeController.getPlayerAmount
+GET     /getRolledDice              controllers.HomeController.getRolledDice
+GET     /getPlayerturn              controllers.HomeController.getPlayerTurn
+POST    /setPlayerturn              controllers.HomeController.setPlayerturn
 
-# GET     /getPlayerturnJson          controllers.HomeController.getPlayerTurnJson()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
