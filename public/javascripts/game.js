@@ -300,9 +300,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function rollMagicDice() {
-        getPlayerTurnFromBackend()
-        setPlayerTurnInBackend(2)
-        getPlayerTurnFromBackend()
+        getPiecesListFromBackend()
+        setPiecesListInBackend(pieceList)
+        getPiecesListFromBackend()
 
         rolledDice = 6;
         timesPlayerRolled = 0;
@@ -541,7 +541,7 @@ document.addEventListener('DOMContentLoaded', function () {
             dataType: 'json',
             success: function(data) {
                 //funkt noch nicht richtig
-                playerturn = data
+                return data
                 console.log(data)
             },
             error: function(error) {
@@ -556,6 +556,7 @@ document.addEventListener('DOMContentLoaded', function () {
             type: 'GET',
             dataType: 'json',
             success: function(data) {
+                console.log(data)
                 return data
             },
             error: function(error) {
@@ -564,12 +565,13 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    function getPlayerAmountFromBackend() {
+    function getPlayeramountFromBackend() {
         $.ajax({
             url: API_BASE_URL + '/getPlayerAmount',
             type: 'GET',
             dataType: 'json',
             success: function(data) {
+                console.log(data)
                 return data
             },
             error: function(error) {
@@ -584,7 +586,9 @@ document.addEventListener('DOMContentLoaded', function () {
             type: 'GET',
             dataType: 'json',
             success: function(data) {
+                console.log(data)
                 return data
+                
             },
             error: function(error) {
                 console.error('Error:', error);
@@ -598,6 +602,9 @@ document.addEventListener('DOMContentLoaded', function () {
             type: 'GET',
             dataType: 'json',
             success: function(data) {
+                piecesOut.forEach(function(element, index) {
+                    console.log(index + "   " + element);
+                });
                 return data
             },
             error: function(error) {
@@ -612,6 +619,9 @@ document.addEventListener('DOMContentLoaded', function () {
             type: 'GET',
             dataType: 'json',
             success: function(data) {
+                pieceList.forEach(function (coordinates) {
+                    console.log("X: " + coordinates[0] + ", Y: " + coordinates[1]);
+                });
                 return data
             },
             error: function(error) {
@@ -622,14 +632,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     function setPlayerTurnInBackend(playerturnBackend) {
-
         $.ajax({
             type: "POST",
             url:  API_BASE_URL + "/setPlayerturn",
-            dataType: 'json',
             contentType: "application/json",
-            data: JSON.stringify({ number: playerturnBackend }),
-            processData: false,
+            data: JSON.stringify({ playerturnBackend }),
             success: function (response) {
                 console.log('Erfolgreich an das Backend gesendet:', response);
             },
@@ -639,74 +646,79 @@ document.addEventListener('DOMContentLoaded', function () {
         })
     }
 
-    function setRolledDiceInBackend() {
+    function setRolledDiceInBackend(rolledDiceBackend) {
         $.ajax({
-            url: API_BASE_URL + '/getRolledDice',
-            type: 'GET',
-            dataType: 'json',
-            success: function(data) {
-                return data
+            type: "POST",
+            url:  API_BASE_URL + "/setRolledDice",
+            contentType: "application/json",
+            data: JSON.stringify({ rolledDiceBackend }),
+            success: function (response) {
+                console.log('Erfolgreich an das Backend gesendet:', response);
             },
-            error: function(error) {
-                console.error('Error:', error);
+            error: function (error) {
+                console.error('Fehler beim Senden an das Backend:', error);
             }
-        });
+        })
     }
 
-    function setPlayerAmountInBackend() {
+    function setPlayeramountInBackend(playeramountBackend) {
         $.ajax({
-            url: API_BASE_URL + '/getPlayerAmount',
-            type: 'GET',
-            dataType: 'json',
-            success: function(data) {
-                return data
+            type: "POST",
+            url:  API_BASE_URL + "/setPlayeramount",
+            contentType: "application/json",
+            data: JSON.stringify({ playeramountBackend }),
+            success: function (response) {
+                console.log('Erfolgreich an das Backend gesendet:', response);
             },
-            error: function(error) {
-                console.error('Error:', error);
+            error: function (error) {
+                console.error('Fehler beim Senden an das Backend:', error);
             }
-        });
+        })
     }
 
-    function setTimesPlayerRolledInBackend() {
+    function setTimesPlayerRolledInBackend(timesPlayerRolledBackend) {
         $.ajax({
-            url: API_BASE_URL + '/getTimesPlayerRolled',
-            type: 'GET',
-            dataType: 'json',
-            success: function(data) {
-                return data
+            type: "POST",
+            url:  API_BASE_URL + "/setTimesPlayerRolled",
+            contentType: "application/json",
+            data: JSON.stringify({ timesPlayerRolledBackend }),
+            success: function (response) {
+                console.log('Erfolgreich an das Backend gesendet:', response);
             },
-            error: function(error) {
-                console.error('Error:', error);
+            error: function (error) {
+                console.error('Fehler beim Senden an das Backend:', error);
             }
-        });
+        })
     }
 
-    function setPiecesOutInBackend() {
+    function setPiecesOutInBackend(pieceOutBackend) {
         $.ajax({
-            url: API_BASE_URL + '/getPiecesOut',
-            type: 'GET',
-            dataType: 'json',
-            success: function(data) {
-                return data
+            type: "POST",
+            url:  API_BASE_URL + "/setPiecesOut",
+            contentType: "application/json",
+            data: JSON.stringify({ piecesOutBackend }),
+            success: function (response) {
+                console.log('Erfolgreich an das Backend gesendet:', response);
             },
-            error: function(error) {
-                console.error('Error:', error);
+            error: function (error) {
+                console.error('Fehler beim Senden an das Backend:', error);
             }
-        });
+        })
     }
 
-    function setPiecesListInBackend() {
+    function setPiecesListInBackend(piecesListBackend) {
         $.ajax({
-            url: API_BASE_URL + '/getPiecesList',
-            type: 'GET',
-            dataType: 'json',
-            success: function(data) {
-                return data
+            type: "POST",
+            url:  API_BASE_URL + "/setPiecesList",
+            contentType: "application/json",
+            data: JSON.stringify({ piecesListBackend }),
+            success: function (response) {
+                console.log('Erfolgreich an das Backend gesendet:', response);
             },
-            error: function(error) {
-                console.error('Error:', error);
+            error: function (error) {
+                console.error('Fehler beim Senden an das Backend:', error);
             }
-        });
+        })
     }
 
 

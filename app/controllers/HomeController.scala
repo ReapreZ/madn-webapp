@@ -120,17 +120,73 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents) e
     Json.toJson(array).toString()
   }
 
-  def setPlayerturn() = Action(parse.json) {
-    request =>
-      val playerturnJson = request.body
-      //data.playerturn = 
-      data.setPlayerTurnFromJson(playerturnJson)
-      Ok("Playerturn successfully set")
+
+def setPlayerturn() = Action(parse.json) { request =>
+  val playerturnJson = request.body
+  val playerturn = (playerturnJson \ "playerturnBackend").asOpt[Int]
+
+  playerturn.foreach { value =>
+    val playerturnJsValue: JsValue = Json.toJson(value)
+    data.setPlayerTurnFromJson(playerturnJsValue)
   }
+  Ok("Playerturn successfully set")
+}
+
+def setTimesPlayerRolled() = Action(parse.json) { request =>
+  val timesPlayerRolledJson = request.body
+  val timesPlayerRolled = (timesPlayerRolledJson \ "timesPlayerRolledBackend").asOpt[Int]
+
+  timesPlayerRolled.foreach { value =>
+    val timesPlayerRolledJsValue: JsValue = Json.toJson(value)
+    data.setTimesPlayerRolledFromJson(timesPlayerRolledJsValue)
+  }
+  Ok("TimesPlayerRolled successfully set")
+}
+
+def setRolledDice() = Action(parse.json) { request =>
+  val rolledDiceJson = request.body
+  val rolledDice = (rolledDiceJson \ "rolledDiceBackend").asOpt[Int]
+
+  rolledDice.foreach { value =>
+    val rolledDiceJsValue: JsValue = Json.toJson(value)
+    data.setRolledDiceFromJson(rolledDiceJsValue)
+  }
+  Ok("RolledDice successfully set")
+}
+
+def setPlayeramount() = Action(parse.json) { request =>
+  val playeramountJson = request.body
+  val playeramount = (playeramountJson \ "playeramountBackend").asOpt[Int]
+
+  playeramount.foreach { value =>
+    val playeramountJsValue: JsValue = Json.toJson(value)
+    data.setPlayerAmountFromJson(playeramountJsValue)
+  }
+  Ok("Playeramount successfully set")
+}
+
+def setPiecesOut() = Action(parse.json) { request =>
+  val jsonData = request.body
+  val piecesOut = (jsonData \ "piecesOutBackend").asOpt[Seq[Int]].getOrElse(Seq.empty[Int])
+
+  val piecesOutJsValue: JsValue = Json.toJson(piecesOut)
+  data.setPiecesOutFromJson(piecesOutJsValue)
+  Ok("PiecesOut successfully set")
+}
+
+def setPiecesList() = Action(parse.json) { request =>
+  val jsonData = request.body
+  val piecesList = (jsonData \ "pieceListBackend").asOpt[Seq[Seq[Int]]].getOrElse(Seq.empty[Seq[Int]])
+
+  val piecesListJsValue: JsValue = Json.toJson(piecesList)
+  data.setPieceListFromJson(piecesListJsValue)
+  Ok("PiecesList successfully set")
+}
+
+
+
 
   //request.body.validate[Array[Array[Int]]].map 
-
-
 
 
 }

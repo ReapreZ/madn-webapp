@@ -17,6 +17,12 @@ GET     /getPlayerAmount            controllers.HomeController.getPlayerAmount
 GET     /getRolledDice              controllers.HomeController.getRolledDice
 GET     /getPlayerturn              controllers.HomeController.getPlayerTurn
 POST    /setPlayerturn              controllers.HomeController.setPlayerturn
+POST    /setTimesPlayerRolled       controllers.HomeController.setTimesPlayerRolled
+POST    /setRolledDice              controllers.HomeController.setRolledDice
+POST    /setPlayeramount            controllers.HomeController.setPlayeramount
+POST    /setPiecesOut               controllers.HomeController.setPiecesOut
+POST    /setPiecesList              controllers.HomeController.setPiecesList
+
 
 
 # Map static resources from the /public folder to the /assets URL path
