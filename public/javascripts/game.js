@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var playeramount = 0;
     var timesPlayerRolled = 0;
     const API_BASE_URL = "http://localhost:9000";
-    function adjustGameBoard(playeramount){
+    function adjustGameBoard(playeramount) {
         if(playeramount < 2 || playeramount > 4){
             console.error("Ungültige Spieleranzahl. Die Spieleranzahl muss zwischen 2 und 4 Spielern liegen.")
         }
@@ -91,7 +91,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         return filledPlayer;
     }
-    var timesPlayerRolled = 0;
 
     function initializeGame() {
         createGameBoard();
@@ -101,21 +100,32 @@ document.addEventListener('DOMContentLoaded', function () {
         adjustGameBoard(playeramount);
 
         addStartPlayerCircles(houseList);
+        setTimesPlayerRolledInBackend(0);
     }
 
-    function addStartPlayerCircles(list) {  
+    async function addStartPlayerCircles(list) {
+        //await getPlayerTurnFromBackend();
+        //await sleep(700);
         for (let i = 0; i < list.length; i++) {
             const element = list[i];
             const firstValue = element[0];
             const secondValue = element[1];
             const cell = findCellByRowAndColumn(firstValue, secondValue);
-            //const playerturn = getPlayerTurnFromBackend();
-            if(i % 4 === 0 && i != 0) {
-                playerturn = playerturn + 1;
+            await getPlayerTurnFromBackend();
+            if(i % 4 === 0) {
+                if(i != 0) {
+                await updatePlayerturn();
+                await sleep(700);
+                }
             }
+                await getPlayerTurnFromBackend();
                 addPlayerCircle(cell, playerColors[playerturn]);
         }
-        playerturn = 0;
+        await setPlayerTurnInBackend(0);
+    }
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
     }
 
     function createCell(className, row, column) {
@@ -164,6 +174,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function isMovingPieceOutAllowed(cell) {
+        getPlayerTurnFromBackend();
         if(rolledDice != 6) {
             return;
         }
@@ -185,6 +196,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function movePieceOut(cell, startingTile, startingTileX, startingTileY) {
+        getPlayerTurnFromBackend();
         removePlayerCircle(cell);
         addPlayerCircle(startingTile, playerColors[playerturn]);
 
@@ -195,6 +207,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function movePiece(cell) {
+        getPlayerTurnFromBackend();
         if(cell.classList.contains('housep1') || cell.classList.contains('housep2') || cell.classList.contains('housep3') || cell.classList.contains('housep4')) {
             return false;
         }
@@ -219,11 +232,12 @@ document.addEventListener('DOMContentLoaded', function () {
         
     }
 
-    function updatePlayerturn() {
+    async function updatePlayerturn() {
+        getPlayerTurnFromBackend();
         if(playerturn === playeramount-1) {
-            playerturn = 0;
+             await setPlayerTurnInBackend(0);
         } else {
-            playerturn = playerturn + 1;
+            await setPlayerTurnInBackend(playerturn + 1);
         }
     }
 
@@ -244,6 +258,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function isOnePieceOut() {
+        getPlayerTurnFromBackend();
         playerIdx = playerturn * 4;
         for (let i = playerIdx; i < playerIdx + 4; i++) {
             piecePosX = pieceList[i][0];
@@ -300,18 +315,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function rollMagicDice() {
-        getPiecesListFromBackend()
-        setPiecesListInBackend(pieceList)
-        getPiecesListFromBackend()
-
+        getPlayerTurnFromBackend();
         rolledDice = 6;
-        timesPlayerRolled = 0;
+        setTimesPlayerRolledInBackend(0);
         changeTextFieldText("Player " + (playerturn + 1) + " rolled a 6. It's your turn again!");
     }
 
 
     function kickOtherPieceOut(cell) {
-        
+        getPlayerTurnFromBackend();
         //check if x and y is already occupied
         if(!(cell.querySelector('.player-circle') !== null)) {
             const color = getColorAtCell(cell);
@@ -343,6 +355,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function rollDice() {
+        getPlayerTurnFromBackend();
+        getTimesPlayerRolledFromBackend();
         const randomNumber = Math.floor(Math.random() * 6) + 1;
         const diceImage = document.querySelector('.dice-image');
 
@@ -376,28 +390,29 @@ document.addEventListener('DOMContentLoaded', function () {
                 break;
             }
             if(rolledDice === 6 && isOnePieceOut()) {
-                timesPlayerRolled = 0;
+                setTimesPlayerRolledInBackend(0);
                 changeTextFieldText("Player " + (playerturn + 1) + " rolled a " + rolledDice + ". Choose a Piece to get out or move a Piece on the board. It's your turn again!");
                 return;
             } else if(rolledDice === 6) {
-                timesPlayerRolled = 0;
+                setTimesPlayerRolledInBackend(0);
                 changeTextFieldText("Player " + (playerturn + 1) + " rolled a " + rolledDice + ". Choose a Piece to get out. It's your turn again!");
                 return;
             } else if(isOnePieceOut()) {
-                timesPlayerRolled = 0;
+                setTimesPlayerRolledInBackend(0);
                 changeTextFieldText("Player " + (playerturn + 1) + " rolled a " + rolledDice + ". Choose the Piece to move. It's Player " + getNextPlayerturn() + "'s turn next!");
                 //updatePlayerturn();
             } else if(timesPlayerRolled != 2) {
-                timesPlayerRolled = timesPlayerRolled + 1;
+                setTimesPlayerRolledInBackend(timesPlayerRolled + 1);
                 changeTextFieldText("Player " + (playerturn + 1) + " rolled a " + rolledDice + ". It's your turn again!");
             } else {
-                timesPlayerRolled = 0;
+                setTimesPlayerRolledInBackend(0);
                 changeTextFieldText("Player " + (playerturn + 1) + " rolled a " + rolledDice + ". It's Player " + getNextPlayerturn() + "'s turn!");
                 updatePlayerturn();
             }
     }
 
     function getNextPlayerturn() {
+        getPlayerTurnFromBackend();
         if(playerturn === playeramount - 1) {
             return "1";
         } else {
@@ -534,15 +549,15 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    function getPlayerTurnFromBackend() {
-        $.ajax({
+    async function getPlayerTurnFromBackend() {
+        return $.ajax({
             url: API_BASE_URL + '/getPlayerturn',
             type: 'GET',
             dataType: 'json',
             success: function(data) {
-                //funkt noch nicht richtig
-                return data
-                console.log(data)
+                var playerturn2 = 0;
+                playerturn2 = data;
+                return playerturn2;
             },
             error: function(error) {
                 console.error('Error:', error);
@@ -587,7 +602,8 @@ document.addEventListener('DOMContentLoaded', function () {
             dataType: 'json',
             success: function(data) {
                 console.log(data)
-                return data
+                timesPlayerRolled = data;
+                return data;
                 
             },
             error: function(error) {
@@ -605,7 +621,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 piecesOut.forEach(function(element, index) {
                     console.log(index + "   " + element);
                 });
-                return data
+                return data;
             },
             error: function(error) {
                 console.error('Error:', error);
@@ -631,7 +647,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    function setPlayerTurnInBackend(playerturnBackend) {
+    async function setPlayerTurnInBackend(playerturnBackend) {
         $.ajax({
             type: "POST",
             url:  API_BASE_URL + "/setPlayerturn",
