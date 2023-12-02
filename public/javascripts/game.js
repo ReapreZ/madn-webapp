@@ -96,16 +96,14 @@ document.addEventListener('DOMContentLoaded', function () {
         createGameBoard();
         const gameInterface = createGameInterface();
         gameBoard.parentElement.appendChild(gameInterface);
-
         adjustGameBoard(playeramount);
-
         addStartPlayerCircles(houseList);
         setTimesPlayerRolledInBackend(0);
+        console.log("Playerturn = " + playerturn + " vor dem Würfeln.")
+        
     }
 
     async function addStartPlayerCircles(list) {
-        //await getPlayerTurnFromBackend();
-        //await sleep(700);
         for (let i = 0; i < list.length; i++) {
             const element = list[i];
             const firstValue = element[0];
@@ -114,14 +112,19 @@ document.addEventListener('DOMContentLoaded', function () {
             await getPlayerTurnFromBackend();
             if(i % 4 === 0) {
                 if(i != 0) {
+                await sleep(100);
                 await updatePlayerturn();
-                await sleep(700);
+                await sleep(100);
+                
                 }
             }
                 await getPlayerTurnFromBackend();
                 addPlayerCircle(cell, playerColors[playerturn]);
+                
         }
-        await setPlayerTurnInBackend(0);
+        await sleep(500);
+        await updatePlayerturn();
+        await sleep(500);
     }
 
     function sleep(ms) {
@@ -233,12 +236,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     async function updatePlayerturn() {
+        await sleep(100);
         getPlayerTurnFromBackend();
         if(playerturn === playeramount-1) {
              await setPlayerTurnInBackend(0);
         } else {
             await setPlayerTurnInBackend(playerturn + 1);
         }
+        await sleep(100);
     }
 
     function updateToNewPosition(piecePosIdx, cellX, cellY) {
@@ -314,8 +319,10 @@ document.addEventListener('DOMContentLoaded', function () {
         return dice;
     }
 
-    function rollMagicDice() {
-        getPlayerTurnFromBackend();
+    async function rollMagicDice() {
+        //getPlayerTurnFromBackend();
+        await getPlayerTurnFromBackend();
+        console.log("Playerturn = " + playerturn)
         rolledDice = 6;
         setTimesPlayerRolledInBackend(0);
         changeTextFieldText("Player " + (playerturn + 1) + " rolled a 6. It's your turn again!");
@@ -555,9 +562,8 @@ document.addEventListener('DOMContentLoaded', function () {
             type: 'GET',
             dataType: 'json',
             success: function(data) {
-                var playerturn2 = 0;
-                playerturn2 = data;
-                return playerturn2;
+                playerturn = data;
+                //return playerturn;
             },
             error: function(error) {
                 console.error('Error:', error);
@@ -571,7 +577,6 @@ document.addEventListener('DOMContentLoaded', function () {
             type: 'GET',
             dataType: 'json',
             success: function(data) {
-                console.log(data)
                 return data
             },
             error: function(error) {
@@ -586,7 +591,6 @@ document.addEventListener('DOMContentLoaded', function () {
             type: 'GET',
             dataType: 'json',
             success: function(data) {
-                console.log(data)
                 return data
             },
             error: function(error) {
@@ -601,7 +605,6 @@ document.addEventListener('DOMContentLoaded', function () {
             type: 'GET',
             dataType: 'json',
             success: function(data) {
-                console.log(data)
                 timesPlayerRolled = data;
                 return data;
                 
@@ -654,6 +657,7 @@ document.addEventListener('DOMContentLoaded', function () {
             contentType: "application/json",
             data: JSON.stringify({ playerturnBackend }),
             success: function (response) {
+                console.log("Playerturn = " + playerturn + " wird ans Backend versendet")
                 console.log('Erfolgreich an das Backend gesendet:', response);
             },
             error: function (error) {
