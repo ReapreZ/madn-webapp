@@ -93,6 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function initializeGame() {
+        setPlayerTurnInBackend(0);
         createGameBoard();
         const gameInterface = createGameInterface();
         gameBoard.parentElement.appendChild(gameInterface);
@@ -112,19 +113,22 @@ document.addEventListener('DOMContentLoaded', function () {
             await getPlayerTurnFromBackend();
             if(i % 4 === 0) {
                 if(i != 0) {
-                await sleep(100);
+                //await sleep(100);
                 await updatePlayerturn();
-                await sleep(100);
+                //await sleep(100);
                 
                 }
             }
                 await getPlayerTurnFromBackend();
                 addPlayerCircle(cell, playerColors[playerturn]);
+                //addPlayerCircle(cell, playerColors[playerturn+1]);
+                //addPlayerCircle(cell, playerColors[playerturn+2]);
+                //addPlayerCircle(cell, playerColors[playerturn+3]);
                 
         }
-        await sleep(500);
-        await updatePlayerturn();
-        await sleep(500);
+        //await sleep(500);
+        //await updatePlayerturn();
+        //await sleep(500);
     }
 
     function sleep(ms) {
@@ -209,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function () {
         updateCoordinateInList(pieceList, cellX, cellY, startingTileX, startingTileY);
     }
 
-    function movePiece(cell) {
+    async function movePiece(cell) {
         getPlayerTurnFromBackend();
         if(cell.classList.contains('housep1') || cell.classList.contains('housep2') || cell.classList.contains('housep3') || cell.classList.contains('housep4')) {
             return false;
@@ -229,7 +233,7 @@ document.addEventListener('DOMContentLoaded', function () {
             addPlayerCircle(findCellByRowAndColumn(newPosX, newPosY), currentPlayerColor);
 
             if(rolledDice != 6) {
-                updatePlayerturn();
+                await updatePlayerturn();
             }
         }
         
@@ -237,14 +241,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     async function updatePlayerturn() {
         await sleep(100);
-        getPlayerTurnFromBackend();
-        if(playerturn === playeramount-1) {
-             await setPlayerTurnInBackend(0);
+        playerturn = await getPlayerTurnFromBackend();
+        
+        if (playerturn === playeramount - 1) {
+            await setPlayerTurnInBackend(0);
         } else {
             await setPlayerTurnInBackend(playerturn + 1);
         }
+    
         await sleep(100);
     }
+    
 
     function updateToNewPosition(piecePosIdx, cellX, cellY) {
         
@@ -361,7 +368,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return null;
     }
 
-    function rollDice() {
+    async function rollDice() {
         getPlayerTurnFromBackend();
         getTimesPlayerRolledFromBackend();
         const randomNumber = Math.floor(Math.random() * 6) + 1;
@@ -414,7 +421,7 @@ document.addEventListener('DOMContentLoaded', function () {
             } else {
                 setTimesPlayerRolledInBackend(0);
                 changeTextFieldText("Player " + (playerturn + 1) + " rolled a " + rolledDice + ". It's Player " + getNextPlayerturn() + "'s turn!");
-                updatePlayerturn();
+                await updatePlayerturn();
             }
     }
 
@@ -563,6 +570,7 @@ document.addEventListener('DOMContentLoaded', function () {
             dataType: 'json',
             success: function(data) {
                 playerturn = data;
+                console.log("Playerturn from backend : " + playerturn);
                 //return playerturn;
             },
             error: function(error) {
