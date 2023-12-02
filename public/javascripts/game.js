@@ -113,22 +113,13 @@ document.addEventListener('DOMContentLoaded', function () {
             await getPlayerTurnFromBackend();
             if(i % 4 === 0) {
                 if(i != 0) {
-                //await sleep(100);
                 await updatePlayerturn();
-                //await sleep(100);
-                
                 }
             }
                 await getPlayerTurnFromBackend();
                 addPlayerCircle(cell, playerColors[playerturn]);
-                //addPlayerCircle(cell, playerColors[playerturn+1]);
-                //addPlayerCircle(cell, playerColors[playerturn+2]);
-                //addPlayerCircle(cell, playerColors[playerturn+3]);
-                
         }
-        //await sleep(500);
-        //await updatePlayerturn();
-        //await sleep(500);
+
         setPlayerTurnInBackend(0);
     }
 
