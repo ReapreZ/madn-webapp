@@ -129,6 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
         //await sleep(500);
         //await updatePlayerturn();
         //await sleep(500);
+        setPlayerTurnInBackend(0);
     }
 
     function sleep(ms) {
