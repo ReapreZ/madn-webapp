@@ -143,14 +143,14 @@ document.addEventListener('DOMContentLoaded', function () {
         return cell;
     }
 
-    function updateCoordinateInList(list, x, y, newX, newY) {
-        for (let i = 0; i < list.length; i++) {
-            const coordinates = list[i];
+    function updateCoordinateInList(x, y, newX, newY) {
+        for (let i = 0; i < pieceList.length; i++) {
+            const coordinates = pieceList[i];
             const pieceX = coordinates[0];
             const pieceY = coordinates[1];
     
             if (pieceX === x && pieceY === y) {
-                list[i] = [newX, newY];
+                pieceList[i] = [newX, newY];
                 return;
             }
         }
@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const cellCoordinates = getCoordinatesFromCell(cell);
         const cellX = cellCoordinates[0];
         const cellY = cellCoordinates[1];
-        updateCoordinateInList(pieceList, cellX, cellY, startingTileX, startingTileY);
+        updateCoordinateInList(cellX, cellY, startingTileX, startingTileY);
         await setPiecesListInBackend(pieceList);
     }
 
@@ -270,15 +270,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     async function isOnePieceOut() {
         await getPiecesListFromBackend();
-        getPlayerTurnFromBackend();
-        await sleep(700);
+        await getPlayerTurnFromBackend();
+        await sleep(300);
         playerIdx = playerturn * 4;
         for (let i = playerIdx; i < playerIdx + 4; i++) {
             piecePosX = pieceList[i][0];
             piecePosY = pieceList[i][1];
             housePosX = houseList[i][0];
             housePosY = houseList[i][1];
-            //console.log(piecePosX + "   " + housePosX + "   " + piecePosY + "   " + housePosY);
             if(!(piecePosX === housePosX && piecePosY === housePosY)) {
                 return true;
             }
@@ -354,7 +353,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     async function findEmptyHouseSlot(kickedOutPlayer) {
         await getPiecesListFromBackend();
-        await sleep(700);
+        await sleep(300);
         playerIdx = kickedOutPlayer * 4;
         for (let i = playerIdx; i < playerIdx + 4; i++) {
             piecePosX = pieceList[i][0];
@@ -378,7 +377,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const diceImage = document.querySelector('.dice-image');
         await setRolledDiceInBackend(randomNumber);
         rolledDice = randomNumber;
-
         switch (randomNumber) {
             case 1:
                 diceImage.src = '/assets/images/one.png';
@@ -402,7 +400,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.error('Invalid random number.');
                 break;
             }
-            if(rolledDice === 6 && isOnePieceOut()) {
+            if(rolledDice === 6 && await isOnePieceOut()) {
                 setTimesPlayerRolledInBackend(0);
                 changeTextFieldText("Player " + (playerturn + 1) + " rolled a " + rolledDice + ". Choose a Piece to get out or move a Piece on the board. It's your turn again!");
                 return;
@@ -410,7 +408,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 setTimesPlayerRolledInBackend(0);
                 changeTextFieldText("Player " + (playerturn + 1) + " rolled a " + rolledDice + ". Choose a Piece to get out. It's your turn again!");
                 return;
-            } else if(isOnePieceOut()) {
+            } else if(await isOnePieceOut()) {
                 setTimesPlayerRolledInBackend(0);
                 changeTextFieldText("Player " + (playerturn + 1) + " rolled a " + rolledDice + ". Choose the Piece to move. It's Player " + getNextPlayerturn() + "'s turn next!");
                 //updatePlayerturn();
