@@ -175,12 +175,14 @@ def setPiecesOut() = Action(parse.json) { request =>
 }
 
 def setPiecesList() = Action(parse.json) { request =>
-  val jsonData = request.body
-  val piecesList = (jsonData \ "pieceListBackend").asOpt[Seq[Seq[Int]]].getOrElse(Seq.empty[Seq[Int]])
+    val jsonData = request.body
 
-  val piecesListJsValue: JsValue = Json.toJson(piecesList)
-  data.setPieceListFromJson(piecesListJsValue)
-  Ok("PiecesList successfully set")
+    val piecesList = (jsonData \ "piecesListBackend").asOpt[Seq[Seq[Int]]].getOrElse(Seq.empty[Seq[Int]]).map(_.toArray).toArray
+
+    val piecesListJsValue: JsValue = Json.toJson(piecesList)
+    data.setPieceListFromJson(piecesListJsValue)
+
+    Ok("PiecesList successfully set")
 }
 
 

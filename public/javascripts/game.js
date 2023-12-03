@@ -93,15 +93,15 @@ document.addEventListener('DOMContentLoaded', function () {
         return filledPlayer;
     }
 
-    function initializeGame() {
+    async function initializeGame() {
         setPlayerTurnInBackend(0);
+        await setPiecesListInBackend(pieceList);
         createGameBoard();
         const gameInterface = createGameInterface();
         gameBoard.parentElement.appendChild(gameInterface);
         adjustGameBoard(playeramount);
         addStartPlayerCircles(houseList);
         setTimesPlayerRolledInBackend(0);
-        console.log("Playerturn = " + playerturn + " vor dem Würfeln.")
         
     }
 
@@ -197,12 +197,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     async function movePieceOut(cell, startingTile, startingTileX, startingTileY) {
-        await getPlayerTurnFromBackend();
         await getPiecesListFromBackend();
-        await sleep(700);
+        await getPlayerTurnFromBackend();
+        await sleep(300);
         removePlayerCircle(cell);
         addPlayerCircle(startingTile, playerColors[playerturn]);
-
         const cellCoordinates = getCoordinatesFromCell(cell);
         const cellX = cellCoordinates[0];
         const cellY = cellCoordinates[1];
@@ -211,10 +210,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     async function movePiece(cell) {
-        //await getRolledDiceFromBackend();
         getPlayerTurnFromBackend();
         await getPiecesListFromBackend();
-        await sleep(700);
+        await sleep(300);
         if(cell.classList.contains('housep1') || cell.classList.contains('housep2') || cell.classList.contains('housep3') || cell.classList.contains('housep4')) {
             return false;
         }
@@ -227,6 +225,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if(pieceColor === currentPlayerColor) {
             const newPos = updateToNewPosition(piecePosIdx, cellX, cellY);
             await setPiecesListInBackend(pieceList);
+            await sleep(300);
             const newPosX = newPos[0];
             const newPosY = newPos[1];
             removePlayerCircle(cell);
@@ -271,8 +270,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     async function isOnePieceOut() {
         await getPiecesListFromBackend();
-        await sleep(700);
         getPlayerTurnFromBackend();
+        await sleep(700);
         playerIdx = playerturn * 4;
         for (let i = playerIdx; i < playerIdx + 4; i++) {
             piecePosX = pieceList[i][0];
@@ -329,9 +328,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     async function rollMagicDice() {
-        //getPlayerTurnFromBackend();
         await getPlayerTurnFromBackend();
-        console.log("Playerturn = " + playerturn)
         rolledDice = 6;
         await setRolledDiceInBackend(6);
         setTimesPlayerRolledInBackend(0);
@@ -364,7 +361,6 @@ document.addEventListener('DOMContentLoaded', function () {
             piecePosY = pieceList[i][1];
             housePosX = houseList[i][0];
             housePosY = houseList[i][1];
-            //console.log(piecePosX + "   " + housePosX + "   " + piecePosY + "   " + housePosY);
             if(!(piecePosX === housePosX && piecePosY === housePosY)) {
                 return [housePosX, housePosY];
             }
@@ -374,6 +370,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     async function rollDice() {
+        await getPiecesListFromBackend();
         await getPlayerTurnFromBackend();
         await getTimesPlayerRolledFromBackend();
         await sleep(300);
@@ -451,7 +448,6 @@ document.addEventListener('DOMContentLoaded', function () {
             cell.style.height = maxHeight > 0 ? '35px' : 'auto';
     
             cell.addEventListener('click', function () {
-                console.log(`Clicked on cell at row ${rowIndex}, column ${columnIndex}`);
             });
     
             row.appendChild(cell);
@@ -504,7 +500,6 @@ document.addEventListener('DOMContentLoaded', function () {
         if (isPlayerCirclePlaceable(cell)) {
             const playerCircle = createPlayerCircle(color);
             cell.appendChild(playerCircle);
-            console.log(cell.children);
         }
     }
 
@@ -572,8 +567,6 @@ document.addEventListener('DOMContentLoaded', function () {
             dataType: 'json',
             success: function(data) {
                 playerturn = data;
-                console.log("Playerturn from backend : " + playerturn);
-                //return playerturn;
             },
             error: function(error) {
                 console.error('Error:', error);
@@ -616,7 +609,6 @@ document.addEventListener('DOMContentLoaded', function () {
             dataType: 'json',
             success: function(data) {
                 timesPlayerRolled = data;
-                
             },
             error: function(error) {
                 console.error('Error:', error);
@@ -648,9 +640,10 @@ document.addEventListener('DOMContentLoaded', function () {
             dataType: 'json',
             success: function(data) {
                 pieceList.forEach(function (coordinates) {
-                    console.log("X: " + coordinates[0] + ", Y: " + coordinates[1]);
+                console.log("Piecelist erfolgreich gesetzt");
                 });
                 pieceList = data;
+
             },
             error: function(error) {
                 console.error('Error:', error);
@@ -666,7 +659,6 @@ document.addEventListener('DOMContentLoaded', function () {
             contentType: "application/json",
             data: JSON.stringify({ playerturnBackend }),
             success: function (response) {
-                console.log("Playerturn = " + playerturn + " wird ans Backend versendet")
                 console.log('Erfolgreich an das Backend gesendet:', response);
             },
             error: function (error) {
