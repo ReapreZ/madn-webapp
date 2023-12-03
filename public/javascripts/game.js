@@ -19,13 +19,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     
     
-    function startGame() {
+    async function startGame() {
         player1Name = document.getElementById('player1').value;
         player2Name = document.getElementById('player2').value;
         player3Name = document.getElementById('player3').value;
         player4Name = document.getElementById('player4').value;
         
         playeramount = filledPlayer();
+        await setPlayeramountInBackend(playeramount);
 
         initializeGame();
     
@@ -172,8 +173,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    function isMovingPieceOutAllowed(cell) {
-        getPlayerTurnFromBackend();
+    async function isMovingPieceOutAllowed(cell) {
+        //await getRolledDiceFromBackend();
+        await getPlayerTurnFromBackend();
         if(rolledDice != 6) {
             return;
         }
@@ -194,8 +196,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    function movePieceOut(cell, startingTile, startingTileX, startingTileY) {
-        getPlayerTurnFromBackend();
+    async function movePieceOut(cell, startingTile, startingTileX, startingTileY) {
+        await getPlayerTurnFromBackend();
+        await getPiecesListFromBackend();
+        await sleep(700);
         removePlayerCircle(cell);
         addPlayerCircle(startingTile, playerColors[playerturn]);
 
@@ -203,14 +207,18 @@ document.addEventListener('DOMContentLoaded', function () {
         const cellX = cellCoordinates[0];
         const cellY = cellCoordinates[1];
         updateCoordinateInList(pieceList, cellX, cellY, startingTileX, startingTileY);
+        await setPiecesListInBackend(pieceList);
     }
 
     async function movePiece(cell) {
+        //await getRolledDiceFromBackend();
         getPlayerTurnFromBackend();
+        await getPiecesListFromBackend();
+        await sleep(700);
         if(cell.classList.contains('housep1') || cell.classList.contains('housep2') || cell.classList.contains('housep3') || cell.classList.contains('housep4')) {
             return false;
         }
-        const pieceColor = getColorAtCell(cell)
+        const pieceColor = getColorAtCell(cell);
         const cellCoordinates = getCoordinatesFromCell(cell);
         const cellX = cellCoordinates[0];
         const cellY = cellCoordinates[1];
@@ -218,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const currentPlayerColor = playerColors[playerturn];
         if(pieceColor === currentPlayerColor) {
             const newPos = updateToNewPosition(piecePosIdx, cellX, cellY);
-            console.log(newPos);
+            await setPiecesListInBackend(pieceList);
             const newPosX = newPos[0];
             const newPosY = newPos[1];
             removePlayerCircle(cell);
@@ -246,7 +254,7 @@ document.addEventListener('DOMContentLoaded', function () {
     
 
     function updateToNewPosition(piecePosIdx, cellX, cellY) {
-        
+        getRolledDiceFromBackend();
         const fieldIdx = findIndexFromList(fieldList, cellX, cellY);
         const newPos = fieldList[fieldIdx + rolledDice];
         pieceList[piecePosIdx] = newPos;
@@ -261,7 +269,9 @@ document.addEventListener('DOMContentLoaded', function () {
         return null;
     }
 
-    function isOnePieceOut() {
+    async function isOnePieceOut() {
+        await getPiecesListFromBackend();
+        await sleep(700);
         getPlayerTurnFromBackend();
         playerIdx = playerturn * 4;
         for (let i = playerIdx; i < playerIdx + 4; i++) {
@@ -323,6 +333,7 @@ document.addEventListener('DOMContentLoaded', function () {
         await getPlayerTurnFromBackend();
         console.log("Playerturn = " + playerturn)
         rolledDice = 6;
+        await setRolledDiceInBackend(6);
         setTimesPlayerRolledInBackend(0);
         changeTextFieldText("Player " + (playerturn + 1) + " rolled a 6. It's your turn again!");
     }
@@ -344,7 +355,9 @@ document.addEventListener('DOMContentLoaded', function () {
         //move the piece back to their house
     }
 
-    function findEmptyHouseSlot(kickedOutPlayer) {
+    async function findEmptyHouseSlot(kickedOutPlayer) {
+        await getPiecesListFromBackend();
+        await sleep(700);
         playerIdx = kickedOutPlayer * 4;
         for (let i = playerIdx; i < playerIdx + 4; i++) {
             piecePosX = pieceList[i][0];
@@ -361,35 +374,32 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     async function rollDice() {
-        getPlayerTurnFromBackend();
-        getTimesPlayerRolledFromBackend();
+        await getPlayerTurnFromBackend();
+        await getTimesPlayerRolledFromBackend();
+        await sleep(300);
         const randomNumber = Math.floor(Math.random() * 6) + 1;
         const diceImage = document.querySelector('.dice-image');
+        await setRolledDiceInBackend(randomNumber);
+        rolledDice = randomNumber;
 
         switch (randomNumber) {
             case 1:
                 diceImage.src = '/assets/images/one.png';
-                rolledDice = 1;
                 break;
             case 2:
                 diceImage.src = '/assets/images/two.png';
-                rolledDice = 2;
                 break;
             case 3:
                 diceImage.src = '/assets/images/three.png';
-                rolledDice = 3;
                 break;
             case 4:
                 diceImage.src = '/assets/images/four.png';
-                rolledDice = 4;
                 break;
             case 5:
                 diceImage.src = '/assets/images/five.png';
-                rolledDice = 5;
                 break;
             case 6:
                 diceImage.src = '/assets/images/six.png';
-                rolledDice = 6;
                 break;
             default:
                 console.error('Invalid random number.');
@@ -571,13 +581,13 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    function getRolledDiceFromBackend() {
+    async function getRolledDiceFromBackend() {
         $.ajax({
             url: API_BASE_URL + '/getRolledDice',
             type: 'GET',
             dataType: 'json',
             success: function(data) {
-                return data
+                rolledDice = data;
             },
             error: function(error) {
                 console.error('Error:', error);
@@ -585,13 +595,13 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    function getPlayeramountFromBackend() {
+    async function getPlayeramountFromBackend() {
         $.ajax({
             url: API_BASE_URL + '/getPlayerAmount',
             type: 'GET',
             dataType: 'json',
             success: function(data) {
-                return data
+                playeramount = data;
             },
             error: function(error) {
                 console.error('Error:', error);
@@ -599,14 +609,13 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    function getTimesPlayerRolledFromBackend() {
+    async function getTimesPlayerRolledFromBackend() {
         $.ajax({
             url: API_BASE_URL + '/getTimesPlayerRolled',
             type: 'GET',
             dataType: 'json',
             success: function(data) {
                 timesPlayerRolled = data;
-                return data;
                 
             },
             error: function(error) {
@@ -615,7 +624,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    function getPiecesOutFromBackend() {
+    async function getPiecesOutFromBackend() {
         $.ajax({
             url: API_BASE_URL + '/getPiecesOut',
             type: 'GET',
@@ -624,7 +633,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 piecesOut.forEach(function(element, index) {
                     console.log(index + "   " + element);
                 });
-                return data;
+                piecesOut = data;
             },
             error: function(error) {
                 console.error('Error:', error);
@@ -632,7 +641,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    function getPiecesListFromBackend() {
+    async function getPiecesListFromBackend() {
         $.ajax({
             url: API_BASE_URL + '/getPiecesList',
             type: 'GET',
@@ -641,7 +650,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 pieceList.forEach(function (coordinates) {
                     console.log("X: " + coordinates[0] + ", Y: " + coordinates[1]);
                 });
-                return data
+                pieceList = data;
             },
             error: function(error) {
                 console.error('Error:', error);
@@ -666,7 +675,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
     }
 
-    function setRolledDiceInBackend(rolledDiceBackend) {
+    async function setRolledDiceInBackend(rolledDiceBackend) {
         $.ajax({
             type: "POST",
             url:  API_BASE_URL + "/setRolledDice",
@@ -681,7 +690,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
     }
 
-    function setPlayeramountInBackend(playeramountBackend) {
+    async function setPlayeramountInBackend(playeramountBackend) {
         $.ajax({
             type: "POST",
             url:  API_BASE_URL + "/setPlayeramount",
@@ -726,7 +735,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
     }
 
-    function setPiecesListInBackend(piecesListBackend) {
+    async function setPiecesListInBackend(piecesListBackend) {
         $.ajax({
             type: "POST",
             url:  API_BASE_URL + "/setPiecesList",
