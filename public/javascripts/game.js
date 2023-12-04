@@ -39,11 +39,54 @@ document.addEventListener('DOMContentLoaded', function () {
     
         closePopup();
     }
+
+    const connectWebsocket = () => {
+        const socket = new WebSocket("ws://localhost:9000/websocket");
+        socket.onopen = function (event) {
+            console.log("Socket is now open", event);
+            SOCKET_OPEN = true
+        }
+        socket.onmessage = function (event) {
+            const message = JSON.parse(event.data);
+            console.log(message + "<------");
+
+        // Andere Nachrichten verarbeiten
+            if (message.startsWith("updateFromBackend")) {
+                switch (updatedVar) {
+                  case "playerturn": getPlayerTurnFromBackend();
+                  case "rolledDice": getRolledDiceFromBackend();
+                  case "timesPlayerRolled": getTimesPlayerRolledFromBackend();
+                  case "playeramount": getPlayeramountFromBackend();
+                  case "piecesList": 
+                      getPiecesListFromBackend();
+                
+                }
+        }
+        }
+        socket.onerror = function (error) {
+            console.log("error=",error)
+        }
+        socket.onclose = function () {
+            console.log("socket close")
+            SOCKET_OPEN = false
+        }
+    }
+
+    const checkAndReconnect = () => {
+        if (!SOCKET_OPEN) {
+            console.log("Reconnecting websocket...")
+            connectWebsocket()
+        }
+        SOCKET_TIMER = setTimeout(checkAndReconnect, SOCKET_INVERVALL)
+    }
     
     var player1Name;
     var player2Name;
     var player3Name;
     var player4Name;
+
+    let SOCKET_OPEN = false
+    var SOCKET_INVERVALL = 0.5 * 1000
 
     const fieldList = [
         [0, 4],[1, 4],[2, 4],[3, 4],[4, 4],[4, 3],[4, 2],[4, 1],[4, 0],[5, 0],[6, 0],[6, 1],[6, 2],[6, 3],[6, 4],[7, 4],[8, 4],[9, 4],[10, 4],[10, 5],[10, 6],[9, 6],[8, 6],[7, 6],[6, 6],[6, 7],[6, 8],[6, 9],[6, 10],[5, 10],[4, 10],[4, 9],[4, 8],[4, 7],[4, 6],[3, 6],[2, 6],[1, 6],[0, 6],[0, 5],
@@ -94,6 +137,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     async function initializeGame() {
+        checkAndReconnect();
         setPlayerTurnInBackend(0);
         await setPiecesListInBackend(pieceList);
         createGameBoard();

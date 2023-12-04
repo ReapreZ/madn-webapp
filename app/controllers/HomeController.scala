@@ -3,6 +3,7 @@ package controllers
 import com.google.inject.Guice
 import de.htwg.madn.controller.ControllerInterface
 import de.htwg.madn.model.DataComponent.DataToJson
+import de.htwg.madn.model.DataComponent.Changed._
 import de.htwg.madn.model.diceComponent.diceBase.Dice
 import de.htwg.madn.start.MADNModule
 
@@ -17,6 +18,7 @@ import scala.util.{Failure, Success}
 import akka.util.ByteString
 import play.api.libs.streams._
 import scala.swing.Reactor
+import akka.actor._
 
 @Singleton
 class HomeController @Inject()(val controllerComponents: ControllerComponents, implicit val system: ActorSystem) extends BaseController {
@@ -30,8 +32,8 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents, i
    class MadnActor(out: ActorRef) extends Actor with Reactor {
     listenTo(data)
     override def receive = {
-      case msg: String =>
-        out ! (data.toJson) //??
+      case UpdateFromBackend(updatedVar) =>
+        out ! s"updateFromBackend($updatedVar)"
     }
 
     reactions += {
@@ -47,19 +49,38 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents, i
         out ! sendJsonToClient("piecesList")
     }
 
+    override def preStart(): Unit = {
+    println("MadnActor started")
+  }
+
+  override def postStop(): Unit = {
+    println("MadnActor stopped")
+  }
+
+  override def preRestart(reason: Throwable, message: Option[Any]): Unit = {
+    println(s"MadnActor restarting due to ${reason.getMessage}", reason)
+    super.preRestart(reason, message)
+  }
+
+  override def postRestart(reason: Throwable): Unit = {
+    println("MadnActor restarted")
+    super.postRestart(reason)
+  }
+
     def sendJsonToClient(event: String) = {
-      switch(event) {
+      event match {
         case "playerturn" => 
-          self ! UpdateFromBackend("playerturn")
+          out ! UpdateFromBackend("playerturn")
+          out ! UpdateFromBackend("playeramount")
+          out ! UpdateFromBackend("rolledDice")
+          out ! UpdateFromBackend("timesPlayerRolled")
+          out ! UpdateFromBackend("piecesList")
       }
     }
   }
 
   case class UpdateFromBackend(updatedVar: String)
 
-  def alertFrontend() = Action { implicit request: Request[AnyContent] => 
-   Ok(views.js.) 
-  }
 
   object MadnActorFactory {
     def create(out: ActorRef) = {
