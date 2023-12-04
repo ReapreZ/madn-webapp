@@ -8,6 +8,7 @@ scalaVersion := "2.13.12"
 
 libraryDependencies += guice
 libraryDependencies += "com.google.inject" % "guice" % "5.1.0"
+libraryDependencies += "org.scala-lang.modules" %% "scala-swing" % "3.0.0"
 libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "6.0.0-RC2" % Test
 libraryDependencies += ("com.typesafe.slick" %% "slick" % "3.5.0-M3")
   .cross(CrossVersion.for3Use2_13)

@@ -15,30 +15,65 @@ import play.api.mvc._
 import play.api.http.{ContentTypeOf, ContentTypes, Writeable}
 import scala.util.{Failure, Success}
 import akka.util.ByteString
+import play.api.libs.streams._
+import scala.swing.Reactor
 
-/**
- * This controller creates an `Action` to handle HTTP requests to the
- * application's home page.
- */
 @Singleton
-class HomeController @Inject()(val controllerComponents: ControllerComponents) extends BaseController {
+class HomeController @Inject()(val controllerComponents: ControllerComponents, implicit val system: ActorSystem) extends BaseController {
 
- /* private val injector = Guice.createInjector(new MADNModule)
-  val controller = injector.getInstance(classOf[ControllerInterface])*/
   val data: DataToJson = new DataToJson
 
   val dice = new Dice
   var rolledDice = 1
   var playerturnAsChar = 'A';
 
+   class MadnActor(out: ActorRef) extends Actor with Reactor {
+    listenTo(data)
+    override def receive = {
+      case msg: String =>
+        out ! (data.toJson) //??
+    }
+
+    reactions += {
+      case event: PlayerturnChanged =>
+        out ! sendJsonToClient("playerturn")
+      case event: PlayeramountChanged =>
+        out ! sendJsonToClient("playeramount")
+      case event: RolledDiceChanged =>
+        out ! sendJsonToClient("rolledDice")
+      case event: TimesPlayerRolledChanged =>
+        out ! sendJsonToClient("timesPlayerRolled")
+      case event: PiecesListChanged =>
+        out ! sendJsonToClient("piecesList")
+    }
+
+    def sendJsonToClient(event: String) = {
+      switch(event) {
+        case "playerturn" => 
+          self ! UpdateFromBackend("playerturn")
+      }
+    }
+  }
+
+  case class UpdateFromBackend(updatedVar: String)
+
+  def alertFrontend() = Action { implicit request: Request[AnyContent] => 
+   Ok(views.js.) 
+  }
+
+  object MadnActorFactory {
+    def create(out: ActorRef) = {
+      Props(new MadnActor(out))
+    }
+  }
+
+  def socket() = WebSocket.accept[String, String] { request =>
+      ActorFlow.actorRef { out => MadnActorFactory.create(out) }
+  }
+
+
+
   
-  /**
-   * Create an Action to render an HTML page.
-   *
-   * The configuration in the `routes` file means that this method
-   * will be called when the application receives a `GET` request with
-   * a path of `/`.
-   */
   def index() = Action { implicit request: Request[AnyContent] =>
     Ok(views.html.index())
   }

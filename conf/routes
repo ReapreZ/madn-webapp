@@ -22,6 +22,7 @@ POST    /setRolledDice              controllers.HomeController.setRolledDice
 POST    /setPlayeramount            controllers.HomeController.setPlayeramount
 POST    /setPiecesOut               controllers.HomeController.setPiecesOut
 POST    /setPiecesList              controllers.HomeController.setPiecesList
+GET     /websocket                  controllers.HomeController.socket
 
 
 
