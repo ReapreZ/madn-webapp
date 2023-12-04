@@ -43,12 +43,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const connectWebsocket = () => {
         const socket = new WebSocket("ws://localhost:9000/websocket");
         socket.onopen = function (event) {
-            console.log("Socket is now open", event);
+            //console.log("Socket is now open", event);
             SOCKET_OPEN = true
         }
         socket.onmessage = function (event) {
             const message = JSON.parse(event.data);
-            console.log(message + "<------");
 
         // Andere Nachrichten verarbeiten
             if (message.startsWith("updateFromBackend")) {
@@ -67,17 +66,59 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log("error=",error)
         }
         socket.onclose = function () {
-            console.log("socket close")
+            //console.log("socket close")
             SOCKET_OPEN = false
         }
     }
 
     const checkAndReconnect = () => {
         if (!SOCKET_OPEN) {
-            console.log("Reconnecting websocket...")
+            //console.log("Reconnecting websocket...")
             connectWebsocket()
         }
+        updatePiecesOnBoard();
         SOCKET_TIMER = setTimeout(checkAndReconnect, SOCKET_INVERVALL)
+    }
+
+    function updatePiecesOnBoard() {
+        getPiecesListFromBackend();
+        removeAllPlayerCircles();
+        const maxpieces = ((playeramount * 4) - 1);
+        for (let i = 0; i <= maxpieces; i++) {
+            const coordinates = pieceList[i];
+            const pieceX = coordinates[0];
+            const pieceY = coordinates[1];
+            const cell = findCellByRowAndColumn(pieceX, pieceY);
+            
+            const playerIndex = Math.floor(i / 4);
+    
+            addPlayerCircle(cell, playerColors[playerIndex]);
+        }
+    }
+
+
+    function removeAllPlayerCircles() {
+        const allCoordinates = [];
+
+    // Füge Koordinaten aus fieldList hinzu
+    fieldList.forEach(coordinates => {
+        allCoordinates.push({ x: coordinates[0], y: coordinates[1] });
+    });
+
+    // Füge Koordinaten aus houseList hinzu
+    houseList.forEach(coordinates => {
+        allCoordinates.push({ x: coordinates[0], y: coordinates[1] });
+    });
+
+    // Iteriere durch alle Koordinaten und rufe removePlayerCircle für jede Zelle auf
+    allCoordinates.forEach(coordinates => {
+        const cell = findCellByRowAndColumn(coordinates.x, coordinates.y);
+        removePlayerCircle(cell);
+    });
+    }
+
+    function getAllCells() {
+        return document.getElementsByClassName("cell");
     }
     
     var player1Name;
@@ -137,7 +178,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     async function initializeGame() {
-        checkAndReconnect();
         setPlayerTurnInBackend(0);
         await setPiecesListInBackend(pieceList);
         createGameBoard();
@@ -146,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function () {
         adjustGameBoard(playeramount);
         addStartPlayerCircles(houseList);
         setTimesPlayerRolledInBackend(0);
-        
+        checkAndReconnect();
     }
 
     async function addStartPlayerCircles(list) {
@@ -682,7 +722,7 @@ document.addEventListener('DOMContentLoaded', function () {
             dataType: 'json',
             success: function(data) {
                 pieceList.forEach(function (coordinates) {
-                console.log("Piecelist erfolgreich gesetzt");
+                //console.log("Piecelist erfolgreich gesetzt");
                 });
                 pieceList = data;
 
