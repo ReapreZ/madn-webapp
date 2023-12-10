@@ -48,19 +48,16 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         socket.onmessage = function (event) {
             const message = JSON.parse(event.data);
-
-        // Andere Nachrichten verarbeiten
-            if (message.startsWith("updateFromBackend")) {
-                switch (updatedVar) {
-                  case "playerturn": getPlayerTurnFromBackend();
-                  case "rolledDice": getRolledDiceFromBackend();
-                  case "timesPlayerRolled": getTimesPlayerRolledFromBackend();
-                  case "playeramount": getPlayeramountFromBackend();
-                  case "piecesList": 
-                      getPiecesListFromBackend();
-                
-                }
-        }
+            switch (message) {
+              case "playerturn": getPlayerTurnFromBackend();
+              case "rolledDice": getRolledDiceFromBackend();
+              case "timesPlayerRolled": getTimesPlayerRolledFromBackend();
+              case "playeramount": getPlayeramountFromBackend();
+              case "piecesList": 
+                  getPiecesListFromBackend();
+                  updatePiecesOnBoard();
+            
+            }
         }
         socket.onerror = function (error) {
             console.log("error=",error)
@@ -73,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const checkAndReconnect = () => {
         if (!SOCKET_OPEN) {
-            //console.log("Reconnecting websocket...")
+            //console.log("Reconnecting websocket")
             connectWebsocket()
         }
         updatePiecesOnBoard();
@@ -99,26 +96,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function removeAllPlayerCircles() {
         const allCoordinates = [];
-
-    // Füge Koordinaten aus fieldList hinzu
     fieldList.forEach(coordinates => {
         allCoordinates.push({ x: coordinates[0], y: coordinates[1] });
     });
-
-    // Füge Koordinaten aus houseList hinzu
     houseList.forEach(coordinates => {
         allCoordinates.push({ x: coordinates[0], y: coordinates[1] });
     });
-
-    // Iteriere durch alle Koordinaten und rufe removePlayerCircle für jede Zelle auf
     allCoordinates.forEach(coordinates => {
         const cell = findCellByRowAndColumn(coordinates.x, coordinates.y);
         removePlayerCircle(cell);
     });
-    }
-
-    function getAllCells() {
-        return document.getElementsByClassName("cell");
     }
     
     var player1Name;
