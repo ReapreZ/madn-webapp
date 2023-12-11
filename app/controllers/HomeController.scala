@@ -68,14 +68,11 @@ class HomeController @Inject()(val controllerComponents: ControllerComponents, i
   }
 
     def sendJsonToClient(event: String) = {
-      event match {
-        case "playerturn" => 
           out ! UpdateFromBackend("playerturn")
           out ! UpdateFromBackend("playeramount")
           out ! UpdateFromBackend("rolledDice")
           out ! UpdateFromBackend("timesPlayerRolled")
           out ! UpdateFromBackend("piecesList")
-      }
     }
   }
 
